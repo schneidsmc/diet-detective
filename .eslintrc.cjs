@@ -8,6 +8,10 @@ module.exports = {
     'plugin:react-hooks/recommended',
     'prettier',
   ],
+  languageOptions: {
+    ecmaVersion: 5,
+    sourceType: "commonjs"
+  },
   ignorePatterns: ['dist', '.eslintrc.cjs'],
   parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
   settings: { react: { version: '18.2' } },

@@ -60,3 +60,5 @@ const typeDefs = `
         addUserInfo(height: String!, weight: String!, age: Number!, sex: String!): User
     }
     `;
+
+module.exports = typeDefs;

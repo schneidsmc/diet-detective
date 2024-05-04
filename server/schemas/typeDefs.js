@@ -7,7 +7,7 @@ const typeDefs = `
         height: String
         weight: String
         sex: String
-        age: Number
+        age: Int
         foods: [Food]!
     }
 
@@ -27,11 +27,11 @@ const typeDefs = `
     type Food {
         _id: ID!
         name: String
-        categories: Foodcategories
+        categories: FoodCategories
     }
 
     type FoodCategories {
-        calories: Number
+        calories: Float
         sodium: String
         sugar: String
         saturated_fats: String
@@ -57,7 +57,7 @@ const typeDefs = `
     type Mutation {
         addUser(username: String!, email: String!, password: String!): Auth
         login(username: String!, password: String!): Auth
-        addUserInfo(height: String!, weight: String!, age: Number!, sex: String!): User
+        addUserInfo(height: String!, weight: String!, age: Int!, sex: String!): User
     }
     `;
 

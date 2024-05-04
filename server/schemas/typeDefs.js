@@ -1,4 +1,4 @@
-const typeDefs = gql`
+const typeDefs = `
     type User {
         _id: ID 
         username: String!
@@ -59,4 +59,4 @@ const typeDefs = gql`
         login(username: String!, password: String!): Auth
         addUserInfo(height: String!, weight: String!, age: Number!, sex: String!): User
     }
-    `
+    `;

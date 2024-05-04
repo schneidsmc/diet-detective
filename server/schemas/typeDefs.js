@@ -1,4 +1,4 @@
-const typeDefs = gql`
+const typeDefs = `
     type User {
         _id: ID 
         username: String!
@@ -7,7 +7,7 @@ const typeDefs = gql`
         height: String
         weight: String
         sex: String
-        age: Number
+        age: Int
         foods: [Food]!
     }
 
@@ -27,11 +27,11 @@ const typeDefs = gql`
     type Food {
         _id: ID!
         name: String
-        categories: Foodcategories
+        categories: FoodCategories
     }
 
     type FoodCategories {
-        calories: Number
+        calories: Float
         sodium: String
         sugar: String
         saturated_fats: String
@@ -57,6 +57,8 @@ const typeDefs = gql`
     type Mutation {
         addUser(username: String!, email: String!, password: String!): Auth
         login(username: String!, password: String!): Auth
-        addUserInfo(height: String!, weight: String!, age: Number!, sex: String!): User
+        addUserInfo(height: String!, weight: String!, age: Int!, sex: String!): User
     }
-    `
+    `;
+
+module.exports = typeDefs;

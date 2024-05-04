@@ -20,20 +20,16 @@ const userSchema = new Schema({
         minlength: 8,
     },
     height: {
-        type: Number,
-        required: true,
+        type: String,
     },
     weight: {
-        type: Number,
-        required: true
+        type: String,
     },
     age: {
         type: Number,
-        required: true
     }, 
     sex: {
         type: String,
-        required: true
     },
     foods: [
         {

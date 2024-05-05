@@ -1,0 +1,29 @@
+[
+  {
+    "username": "user1",
+    "email": "user1@example.com",
+    "password": "password123",
+    "height": "170",
+    "weight": "70",
+    "age": 30,
+    "sex": "Male"
+  },
+  {
+    "username": "user2",
+    "email": "user2@example.com",
+    "password": "password456",
+    "height": "160",
+    "weight": "60",
+    "age": 25,
+    "sex": "Female"
+  },
+  {
+    "username": "user3",
+    "email": "user3@example.com",
+    "password": "password789",
+    "height": "260",
+    "weight": "20",
+    "age": 35,
+    "sex": "Female"
+  }
+]

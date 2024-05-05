@@ -80,6 +80,20 @@ const resolvers = {
         };
       }
     },
+    addFoodToMealPlan: async (parent, { mealPlanId, foodId }, context) => {
+      if (context.user) {
+        await Mealplan.findOneAndUpdate(
+          { _id: mealPlanId },
+          { $addToSet: { foods: foodId } },
+        );
+
+        const updatedMealPlan =
+          await Mealplan.findById(mealPlanId).populate("foods");
+
+        return updatedMealPlan;
+      }
+      throw new AuthenticationError("Please login to save to Meal Plan.");
+    },
   },
 };
 

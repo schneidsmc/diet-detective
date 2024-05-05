@@ -1,12 +1,19 @@
-const { Food, User } = require("../models");
+const { Food, User, Mealplan } = require("../models");
 const { signToken, AuthenticationError } = require("../utils/auth");
 const resolvers = {
   Query: {
     users: async () => {
-      return User.find().populate("foods");
+      return User.find().populate("mealPlans");
     },
     user: async (parent, { username }) => {
-      return User.findOne({ username }).populate("foods");
+      return User.findOne({ username }).populate("mealPlans");
+    },
+    mealPlans: async (parent, { username }) => {
+      const params = username ? { username } : {};
+      return Mealplan.find(params).sort({ createdAt: -1 });
+    },
+    mealPlan: async (parent, { mealPlanId }) => {
+      return Mealplan.findOne({ _id: mealPlanId });
     },
     foods: async (parent, { username }) => {
       const params = username ? { username } : {};
@@ -27,6 +34,7 @@ const resolvers = {
     addUser: async (parent, { username, email, password }) => {
       const user = await User.create({ username, email, password });
       const token = signToken(user);
+      console.log(token);
       return { token, user };
     },
     login: async (parent, { email, password }) => {
@@ -50,9 +58,26 @@ const resolvers = {
       if (context.user) {
         await User.findOneAndUpdate(
           { _id: context.user._id },
-          { $set: { height, weight, age, sex } },
-          { new: true },
+          {
+            $set: {
+              height: height,
+              weight: weight,
+              age: age,
+              sex: sex,
+            },
+          },
         );
+        // Fetch the updated user information from the database
+        const updatedUser = await User.findById(context.user._id);
+
+        // Return an object containing the updated user information and their username
+        return {
+          username: updatedUser.username,
+          height: updatedUser.height,
+          weight: updatedUser.weight,
+          age: updatedUser.age,
+          sex: updatedUser.sex,
+        };
       }
     },
   },

@@ -8,6 +8,12 @@ const typeDefs = `
         weight: String
         sex: String
         age: Int
+        mealPlans: [Mealplan]!
+    }
+
+    type Mealplan {
+        _id: ID!
+        date: String
         foods: [Food]!
     }
 
@@ -49,6 +55,8 @@ const typeDefs = `
     type Query {
         users:[User]
         user(username: String!): User
+        mealPlans(username: String!): [Mealplan]
+        mealPlan(mealPlanId: ID!): Mealplan
         foods(username: String): [Food]
         food(foodId: ID!): Food
         me: User

@@ -18,11 +18,11 @@ function App() {
   return (
     <div className={`${darkMode && "dark"}`}>
       <div className=" my-bg-color pt-8 dark:bg-gray-300">
-        <Navbar />
-        <Outlet className="dark:text-gray-700" />
+        <Navbar className="sticky top-0 z-50" />
+        <Outlet className="dark:text-gray-600" />
         <button
           onClick={toggleDarkMode}
-          className="sticky w-16 h-16 bottom-16 right-16 float-end bg-white  rounded-full  font-semibold"
+          className="sticky w-16 h-16 bottom-16 right-16 float-end bg-white dark:bg-gray-600 dark:text-white rounded-full font-semibold"
         >
           {darkMode ? (
             <RiMoonClearLine className="mx-auto text-4xl" />

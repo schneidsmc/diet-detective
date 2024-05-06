@@ -9,8 +9,10 @@ const About = () => {
       <div className="sm:py-16">
         <div className="mt-4 md:mt-0 text-center flex">
           <div className="my-auto mx-6">
-            <h2 className="text-4xl font-bold mb-4">About Us</h2>
-            <p className="text-base lg:text-xl mt-5">
+            <h2 className="text-4xl font-bold mb-4 dark:text-gray-600">
+              About Us
+            </h2>
+            <p className="text-base lg:text-xl mt-5 dark:text-gray-600">
               Our vision at DietDetective is to revolutionize the way people
               approach nutrition by providing a comprehensive, user-friendly,
               and personalized platform for tracking and managing dietary
@@ -21,7 +23,7 @@ const About = () => {
               journey, discover the impact of their dietary habits, and achieve
               their wellness goals with confidence and ease.
             </p>
-            <p className="text-base lg:text-xl mt-5">
+            <p className="text-base lg:text-xl mt-5 dark:text-gray-600">
               Diet Detective was designed to be your personalized nutritional
               companion, offering a tailored experience that considers your
               unique profile, including factors like weight, height, sex, and
@@ -35,50 +37,56 @@ const About = () => {
           </div>
         </div>
         <div className="mt-4  md:mt-0 text-center ">
-          <h1 className="text-4xl mx-auto font-bold mb-4 mt-10">Founders</h1>
+          <h1 className="text-4xl mx-auto font-bold mb-4 mt-10 dark:text-gray-600">
+            Founders
+          </h1>
           <div className="flex flex-row justify-around mt-16">
             <div>
               <img src={sergio} alt="" width={300} height={300} />
-              <p className="text-2xl mt-5">Sergio Ardila-Alvarado</p>
+              <p className="text-2xl mt-5 dark:text-gray-600">
+                Sergio Ardila-Alvarado
+              </p>
               <div className="flex flex-row justify-center mt-7">
                 <a href="" className="mx-auto">
-                  <MdWork className="text-4xl" />
+                  <MdWork className="text-4xl contact-shadow dark:text-gray-600 dark:hover:text-gray-900" />
                 </a>
                 <a href="" className="mx-auto">
-                  <FaLinkedin className="text-4xl" />
+                  <FaLinkedin className="text-4xl contact-shadow dark:text-gray-600 dark:hover:text-gray-900" />
                 </a>
                 <a href="" className="mx-auto">
-                  <FaGithub className="text-4xl" />
+                  <FaGithub className="text-4xl contact-shadow dark:text-gray-600 dark:hover:text-gray-900" />
                 </a>
               </div>
             </div>
             <div>
               <img src={sergio} alt="" width={300} height={300} />
-              <p className="text-2xl mt-5">Megan Schneider</p>
+              <p className="text-2xl mt-5 dark:text-gray-600">
+                Megan Schneider
+              </p>
               <div className="flex flex-row justify-center mt-7">
                 <a href="" className="mx-auto">
-                  <MdWork className="text-4xl" />
+                  <MdWork className="text-4xl contact-shadow dark:text-gray-600 dark:hover:text-gray-900" />
                 </a>
                 <a href="" className="mx-auto">
-                  <FaLinkedin className="text-4xl" />
+                  <FaLinkedin className="text-4xl contact-shadow dark:text-gray-600 dark:hover:text-gray-900" />
                 </a>
                 <a href="" className="mx-auto">
-                  <FaGithub className="text-4xl" />
+                  <FaGithub className="text-4xl contact-shadow dark:text-gray-600 dark:hover:text-gray-900" />
                 </a>
               </div>
             </div>
             <div>
               <img src={sergio} alt="" width={300} height={300} />
-              <p className="text-2xl mt-5">Travis Umbel</p>
+              <p className="text-2xl mt-5 dark:text-gray-600">Travis Umbel</p>
               <div className="flex flex-row justify-center mt-7">
                 <a href="" className="mx-auto">
-                  <MdWork className="text-4xl" />
+                  <MdWork className="text-4xl contact-shadow dark:text-gray-600 dark:hover:text-gray-900" />
                 </a>
                 <a href="" className="mx-auto">
-                  <FaLinkedin className="text-4xl" />
+                  <FaLinkedin className="text-4xl contact-shadow dark:text-gray-600 dark:hover:text-gray-900" />
                 </a>
                 <a href="" className="mx-auto">
-                  <FaGithub className="text-4xl" />
+                  <FaGithub className="text-4xl contact-shadow dark:text-gray-600 dark:hover:text-gray-900" />
                 </a>
               </div>
             </div>

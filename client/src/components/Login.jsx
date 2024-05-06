@@ -3,16 +3,30 @@ import React from "react";
 const Login = () => {
   return (
     <div className="text-white text-center mt-20 ">
-      <h1 className="text-5xl font-bold">Login</h1>
-      <p>Email:</p>
-      <input type="text" />
-      <p>Password:</p>
-      <input type="password" />
-      <div>
-        <button className="my-20 border-solid border-white border-2 py-3 px-8">
-          Enter
-        </button>
-      </div>
+      <h1 className="text-5xl font-bold pb-12 dark:text-gray-600">
+        Welcome back!
+      </h1>
+      <form action="">
+        <p className="mt-5 text-xl pr-64 mb-2 dark:text-gray-600">Email:</p>
+        <input
+          type="text"
+          className="rounded-lg w-80 text-black"
+          placeholder="Example123@gmail.com"
+        />
+
+        <p className="mt-5 text-xl pr-56 mb-2 dark:text-gray-600">Password:</p>
+        <input
+          type="password"
+          className="rounded-lg w-80 text-black"
+          placeholder="Password"
+        />
+
+        <div>
+          <button className="my-20 text-3xl border-solid dark:hover:bg-gray-800 dark:bg-gray-600 border-white border-2 rounded-2xl py-3 pb-4 px-8 shadow-button font-bold ">
+            Login
+          </button>
+        </div>
+      </form>
     </div>
   );
 };

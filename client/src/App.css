@@ -9,7 +9,7 @@
 }
 
 .my-bg-color {
-  background-color: #101010;
+  background-color: #1d1b1b;
 }
 
 .contact-shadow:hover {
@@ -26,6 +26,11 @@
 
 .shadow-button:hover {
   filter: drop-shadow(0 0 0.7rem rgb(204, 204, 204));
+  cursor: pointer;
+}
+
+.shadow-dark:hover {
+  filter: drop-shadow(0 0 0.7rem rgb(27, 27, 27));
   cursor: pointer;
 }
 
@@ -128,4 +133,23 @@ img:hover {
 
 .my-text-light {
   color: #525252;
+}
+
+.container {
+  margin: auto;
+}
+
+.backdrop-filter {
+  background: rgba(255, 255, 255, 0.445);
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(40px);
+  transition: all 0.2s ease;
+}
+
+.backdrop-filter:hover {
+  filter: drop-shadow(0 0 0.7rem rgb(122, 122, 122));
+  cursor: pointer;
+  scale: 1.05;
 }

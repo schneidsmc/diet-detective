@@ -16,7 +16,7 @@ import Home from "./components/Home.jsx";
 import About from "./components/About";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
-// import Profile from './components/Profile';
+import Profile from "./components/Profile";
 
 const router = createBrowserRouter([
   {
@@ -39,10 +39,10 @@ const router = createBrowserRouter([
         path: "/Signup",
         element: <Signup />,
       },
-      // {
-      //   path: '/Profile',
-      //   element: <Profile />,
-      // },
+      {
+        path: "/Profile",
+        element: <Profile />,
+      },
     ],
   },
 ]);

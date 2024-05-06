@@ -13,10 +13,10 @@ const Navbar = () => {
   };
 
   return (
-    <div className="bg-gray-300 rounded-full h-[100px] dark:bg-white text-gray-400 max-w-[1200px] mx-auto flex justify-between items-center">
-      <h1 className="text-3xl font-bold text-white dark:bg-slate-800 ml-4">
-        <img className="w-16 inline mb-2" src={logo} alt="logo" /> DIET
-        <span className="text-black">DETECTIVE</span>
+    <div className="bg-gray-300 rounded-full h-[70px] dark:bg-white text-gray-400  max-w-[1200px] mx-auto flex justify-between items-center">
+      <h1 className="text-3xl font-bold text-white dark:bg-slate-800 ml-4 dark:text-gray-900">
+        <img className="w-16 inline mb-1" src={logo} alt="logo" /> DIET
+        <span className="text-black dark:text-gray-400">DETECTIVE</span>
       </h1>
       <ul className="hidden md:flex font-bold">
         <li className="p-5 hover:font-bold text-2xl navbar-shadow">
@@ -84,6 +84,18 @@ const Navbar = () => {
                 }
               >
                 Sign-up
+              </Link>
+            </li>
+            <li className="p-5 text-lg hover:text-gray-500 hover:text-xl options hover:font-bold">
+              <Link
+                to="/Profile"
+                className={
+                  currentPage === "/Profile"
+                    ? "nav-link active text-black"
+                    : "nav-link"
+                }
+              >
+                Profile
               </Link>
             </li>
           </ul>

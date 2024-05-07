@@ -111,6 +111,12 @@ const Signup = () => {
           />
           <p className="inline-block ml-1 dark:text-gray-600">lbs.</p>
         </div>
+        <p className="mt-4 dark:text-gray-600">
+          Do you already have an account?{" "}
+          <a className=" text-red-400 font-bold" href="/Login">
+            Login
+          </a>
+        </p>
         <div>
           <button
             type="submit"

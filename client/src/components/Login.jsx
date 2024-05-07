@@ -20,7 +20,12 @@ const Login = () => {
           className="rounded-lg w-80 text-black"
           placeholder="Password"
         />
-
+        <p className="mt-3 dark:text-gray-600">
+          Don’t have an account yet?{" "}
+          <a className=" text-red-400 font-bold" href="/Signup">
+            Sign up
+          </a>
+        </p>
         <div>
           <button className="my-20 text-3xl border-solid dark:hover:bg-gray-800 dark:bg-gray-600 border-white border-2 rounded-2xl py-3 pb-4 px-8 shadow-button font-bold ">
             Login

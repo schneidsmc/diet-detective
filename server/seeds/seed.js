@@ -19,10 +19,15 @@ const seedDatabase = async () => {
       const { foods: foodNames, ...mealplanData } = mealplanSeed; // Separate food names from mealplan data
 
       // Find corresponding food IDs based on food names
-      const mealPlanFoods = createdFoods
-        .filter((food) => foodNames.includes(food.name))
-        .map((food) => food._id);
-
+      const mealPlanFoods = [];
+      for (const foodName of foodNames) {
+        const foundFood = createdFoods.find((food) => food.name === foodName);
+        if (foundFood) {
+          mealPlanFoods.push(foundFood._id);
+        } else {
+          console.error(`Food with name '${foodName}' not found.`);
+        }
+      }
       // Create meal plan without foods
       const mealplan = await Mealplan.create({
         ...mealplanData,

@@ -13,17 +13,19 @@ const Navbar = () => {
   };
 
   return (
-    <div className="bg-gray-300 rounded-full h-[70px] dark:bg-white text-gray-400  max-w-[1200px] mx-auto flex justify-between items-center">
-      <h1 className="text-3xl font-bold text-white dark:bg-slate-800 ml-4 dark:text-gray-900">
-        <img className="w-16 inline mb-1" src={logo} alt="logo" /> DIET
-        <span className="text-black dark:text-gray-400">DETECTIVE</span>
+    <div className="bg-gray-300 rounded-full h-[70px] dark:bg-gray-500 text-gray-400  max-w-[1200px] mx-auto flex justify-between items-center">
+      <h1 className="text-3xl font-bold mt-2 text-white  ml-4 dark:text-gray-300">
+        <img className="w-16 inline mb-2" src={logo} alt="logo" /> DIET
+        <span className="text-black dark:text-gray-900">DETECTIVE</span>
       </h1>
       <ul className="hidden md:flex font-bold">
         <li className="p-5 hover:font-bold text-2xl navbar-shadow">
           <Link
             to="/"
             className={
-              currentPage === "/" ? "nav-link active text-black" : "nav-link"
+              currentPage === "/"
+                ? "nav-link active text-black dark:text-gray-100"
+                : "nav-link"
             }
           >
             {" "}
@@ -35,7 +37,7 @@ const Navbar = () => {
             to="/About"
             className={
               currentPage === "/About"
-                ? "nav-link active text-black"
+                ? "nav-link active text-black dark:text-gray-100"
                 : "nav-link"
             }
           >
@@ -67,7 +69,7 @@ const Navbar = () => {
                 to="/Login"
                 className={
                   currentPage === "/Login"
-                    ? "nav-link active text-black"
+                    ? "nav-link active text-black dark:text-gray-100"
                     : "nav-link"
                 }
               >
@@ -79,7 +81,7 @@ const Navbar = () => {
                 to="/Signup"
                 className={
                   currentPage === "/Signup"
-                    ? "nav-link active text-black"
+                    ? "nav-link active text-black dark:text-gray-100"
                     : "nav-link"
                 }
               >
@@ -91,7 +93,7 @@ const Navbar = () => {
                 to="/Profile"
                 className={
                   currentPage === "/Profile"
-                    ? "nav-link active text-black"
+                    ? "nav-link active text-black dark:text-gray-100"
                     : "nav-link"
                 }
               >

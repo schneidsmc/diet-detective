@@ -86,8 +86,8 @@ const Home = () => {
         </div>
 
         <div className="col-span-2 pl-16">
-          <h1 className="text-white dark:text-gray-600 text-4xl  sm:text-5xl lg:text-8xl font-extrabold">
-            <span className="text-white dark:text-gray-600">
+          <h1 className="text-white dark:text-gray-700 text-4xl  sm:text-5xl lg:text-8xl font-extrabold">
+            <span className="text-white dark:text-gray-700">
               Your <span className="underline">Path</span> To{" "}
               <span className="underline">Healthier</span> Living
             </span>{" "}

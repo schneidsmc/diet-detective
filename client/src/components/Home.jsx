@@ -86,8 +86,8 @@ const Home = () => {
         </div>
 
         <div className="col-span-2 pl-16">
-          <h1 className="text-white dark:text-gray-600 text-4xl  sm:text-5xl lg:text-8xl font-extrabold">
-            <span className="text-white dark:text-gray-600">
+          <h1 className="text-white dark:text-gray-700 text-4xl  sm:text-5xl lg:text-8xl font-extrabold">
+            <span className="text-white dark:text-gray-700">
               Your <span className="underline">Path</span> To{" "}
               <span className="underline">Healthier</span> Living
             </span>{" "}
@@ -132,7 +132,7 @@ const Home = () => {
         <div className="grid grid-cols-3 gap-4 mt-16">
           <div className="text-white text-center  ">
             <span>
-              <GiHealthPotion className="text-7xl mx-auto shadow-button dark:text-gray-600 dark:hover:text-gray-900" />
+              <GiHealthPotion className="text-7xl mx-auto cursor-pointer dark:text-gray-600 dark:hover:text-gray-900 hover:text-red-200" />
             </span>
             <h1 className="text-3xl my-5 dark:text-gray-600">Start Small</h1>
             <p className="text-lg dark:text-gray-600">
@@ -145,7 +145,7 @@ const Home = () => {
           </div>
           <div className="text-white text-center">
             <span>
-              <GiHealthIncrease className="text-7xl mx-auto shadow-button dark:text-gray-600 dark:hover:text-gray-900" />
+              <GiHealthIncrease className="text-7xl mx-auto cursor-pointer dark:text-gray-600 dark:hover:text-gray-900 hover:text-yellow-200" />
             </span>
             <h1 className="text-3xl my-5 dark:text-gray-600">
               Consistency is Key
@@ -159,7 +159,7 @@ const Home = () => {
           </div>
           <div className="text-white text-center">
             <span>
-              <BiHealth className="text-7xl mx-auto shadow-button dark:text-gray-600 dark:hover:text-gray-900" />
+              <BiHealth className="text-7xl mx-auto cursor-pointer dark:text-gray-600 dark:hover:text-gray-900 hover:text-blue-200" />
             </span>
             <h1 className="text-3xl my-5 dark:text-gray-600">
               Set SMART Goals
@@ -173,7 +173,7 @@ const Home = () => {
           </div>
           <div className="text-white text-center mt-10">
             <span>
-              <TbHealthRecognition className="text-7xl mx-auto shadow-button dark:text-gray-600 dark:hover:text-gray-900" />
+              <TbHealthRecognition className="text-7xl mx-auto cursor-pointer dark:text-gray-600 dark:hover:text-gray-900 hover:text-green-200" />
             </span>
             <h1 className="text-3xl my-5 dark:text-gray-600">
               Find What Works for You
@@ -187,7 +187,7 @@ const Home = () => {
           </div>
           <div className="text-white text-center mt-10">
             <span>
-              <RiMentalHealthLine className="text-7xl mx-auto shadow-button dark:text-gray-600 dark:hover:text-gray-900" />
+              <RiMentalHealthLine className="text-7xl mx-auto cursor-pointer dark:text-gray-600 dark:hover:text-gray-900 hover:text-orange-200" />
             </span>
             <h1 className="text-3xl my-5 dark:text-gray-600">Mindful Eating</h1>
             <p className="text-lg dark:text-gray-600">
@@ -199,7 +199,7 @@ const Home = () => {
           </div>
           <div className="text-white text-center mt-10">
             <span>
-              <MdOutlineHealthAndSafety className="text-7xl mx-auto shadow-button dark:text-gray-600 dark:hover:text-gray-900" />
+              <MdOutlineHealthAndSafety className="text-7xl mx-auto cursor-pointer dark:text-gray-600 dark:hover:text-gray-900 hover:text-indigo-200" />
             </span>
             <h1 className="text-3xl my-5 dark:text-gray-600">Stay Flexible</h1>
             <p className="text-lg dark:text-gray-600">

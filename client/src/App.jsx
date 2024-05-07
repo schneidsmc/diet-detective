@@ -17,7 +17,7 @@ function App() {
   };
   return (
     <div className={`${darkMode && "dark"}`}>
-      <div className=" my-bg-color pt-8 dark:bg-gray-300">
+      <div className=" my-bg-color pt-8 dark:bg-white">
         <Navbar className="sticky top-0 z-50" />
         <Outlet className="dark:text-gray-600" />
         <button

@@ -3,17 +3,23 @@ const { signToken, AuthenticationError } = require("../utils/auth");
 const resolvers = {
   Query: {
     users: async () => {
-      return User.find().populate("mealPlans");
+      return User.find().populate({
+        path: "mealPlans",
+        populate: { path: "foods" },
+      });
     },
     user: async (parent, { username }) => {
-      return User.findOne({ username }).populate("mealPlans");
+      return User.findOne({ username }).populate({
+        path: "mealPlans",
+        populate: { path: "foods" },
+      });
     },
     mealPlans: async (parent, { username }) => {
       const params = username ? { username } : {};
-      return Mealplan.find(params).sort({ createdAt: -1 });
+      return Mealplan.find(params).sort({ createdAt: -1 }).populate("foods");
     },
     mealPlan: async (parent, { mealPlanId }) => {
-      return Mealplan.findOne({ _id: mealPlanId });
+      return Mealplan.findOne({ _id: mealPlanId }).populate("foods");
     },
     foods: async (parent, { username }) => {
       const params = username ? { username } : {};

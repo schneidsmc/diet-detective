@@ -3,36 +3,38 @@ import { TbCirclePlus } from "react-icons/tb";
 import { FaRegRectangleXmark } from "react-icons/fa6";
 
 function AddDynamicInput() {
-  const [val, setVal] = useState([]);
+  // const [val, setVal] = useState([]);
   const handleAdd = () => {
-    const abc = [...val, []];
-    setVal(abc);
+    const newVal = [...val, []];
+    if (newVal.length < 9) {
+      setVal(newVal);
+    }
   };
+
   const handleChange = (onChangeValue, i) => {
     const inputdata = [...val];
     inputdata[i] = onChangeValue.target.value;
     setVal(inputdata);
   };
+
   const handleDelete = (i) => {
     const deleteVal = [...val];
     deleteVal.splice(i);
     setVal(deleteVal);
   };
+
   console.log(val, "data-");
+
   return (
     <>
       <form>
-        <input
-          type="text"
-          className="block rounded-lg mx-auto md:w-64 text-black"
-          placeholder="Your food"
-        />
         <button type="button" onClick={handleAdd}>
           <TbCirclePlus className="text-3xl  mt-2 dark:text-gray-600" />
         </button>
+
         {val.map((data, i) => {
           return (
-            <div>
+            <div key={i}>
               <input
                 value={data}
                 onChange={(e) => handleChange(e, i)}
@@ -46,6 +48,7 @@ function AddDynamicInput() {
             </div>
           );
         })}
+
         <button
           type="submit"
           className="block my-20 mx-auto text-3xl border-solid border-white dark:hover:bg-gray-800 dark:bg-gray-600 border-2 rounded-2xl py-3 pb-4 px-8 shadow-button font-bold"

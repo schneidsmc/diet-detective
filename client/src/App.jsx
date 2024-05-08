@@ -11,7 +11,6 @@ import { FiSun } from "react-icons/fi";
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
-
   const toggleDarkMode = () => {
     setDarkMode(!darkMode);
   };

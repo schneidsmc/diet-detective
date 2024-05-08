@@ -46,6 +46,19 @@ const Navbar = () => {
             MealPlan
           </Link>
         </li>
+        <li className="p-5 hover:font-bold text-2xl navbar-shadow">
+          <Link
+            to="/Nutrition"
+            className={
+              currentPage === "/Nutrition"
+                ? "nav-link active text-black dark:text-gray-100"
+                : "nav-link"
+            }
+          >
+            {" "}
+            Nutrition
+          </Link>
+        </li>
 
         <li className="p-5 text-shadow hover:font-bold text-2xl">
           <Link

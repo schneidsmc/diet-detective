@@ -31,7 +31,7 @@ async function getNutrition(userFoodInput) {
   console.log("Full Nutrition Respone Object", NutritionResponse);
 
   //return the JSON response
-  return JSON.parse(NutritionResponse.choices[0].message);
+  return JSON.stringify(NutritionResponse.choices[0].message);
 }
 
 async function getNutritionForFoods(foodInputs) {

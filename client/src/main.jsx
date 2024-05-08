@@ -18,6 +18,7 @@ import Login from "./components/Login";
 import Signup from "./components/Signup";
 import Profile from "./components/Profile";
 import MealPlan from "./components/MealPlan";
+import Nutrition from "./components/Nutrition";
 
 const router = createBrowserRouter([
   {
@@ -47,6 +48,10 @@ const router = createBrowserRouter([
       {
         path: "/MealPlan",
         element: <MealPlan />,
+      },
+      {
+        path: "/Nutrition",
+        element: <Nutrition />,
       },
     ],
   },

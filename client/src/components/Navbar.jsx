@@ -32,6 +32,21 @@ const Navbar = () => {
             Home
           </Link>
         </li>
+
+        <li className="p-5 hover:font-bold text-2xl navbar-shadow">
+          <Link
+            to="/MealPlan"
+            className={
+              currentPage === "/MealPlan"
+                ? "nav-link active text-black dark:text-gray-100"
+                : "nav-link"
+            }
+          >
+            {" "}
+            MealPlan
+          </Link>
+        </li>
+
         <li className="p-5 text-shadow hover:font-bold text-2xl">
           <Link
             to="/About"
@@ -146,9 +161,9 @@ const Navbar = () => {
           </li>
           <li className="p-2 text-shadow hover:font-bold">
             <Link
-              to="/Work"
+              to="/Login"
               className={
-                currentPage === "/Work"
+                currentPage === "/Login"
                   ? "nav-link active primary-color"
                   : "nav-link"
               }
@@ -158,9 +173,9 @@ const Navbar = () => {
           </li>
           <li className="p-2 text-shadow hover:font-bold">
             <Link
-              to="/Contact"
+              to="/Signup"
               className={
-                currentPage === "/Contact"
+                currentPage === "/Signup"
                   ? "nav-link active primary-color"
                   : "nav-link"
               }

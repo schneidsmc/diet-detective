@@ -20,14 +20,14 @@ const About = () => {
             <h2 className="text-4xl font-bold mb-4 dark:text-gray-600">
               About Us
             </h2>
-            <div className="flex flex-row justify-around my-10">
-              <SiWorldhealthorganization className="text-5xl border-2 rounded size-32 p-3 dark:text-gray-600 dark:hover:text-gray-900 hover:text-yellow-200" />
-              <MdOutlineWorkspacePremium className="text-5xl border-2 rounded size-32 p-3 dark:text-gray-600 dark:hover:text-gray-900 hover:text-blue-200" />
-              <IoFastFoodOutline className="text-5xl border-2 rounded size-32 p-3 dark:text-gray-600 dark:hover:text-gray-900 hover:text-red-200" />
-              <GiHealthCapsule className="text-5xl border-2 rounded size-32 p-3 dark:text-gray-600 dark:hover:text-gray-900 hover:text-green-200" />
-              <RiHealthBookLine className="text-5xl border-2 rounded size-32 p-3 dark:text-gray-600 dark:hover:text-gray-900 hover:text-orange-200" />
+            <div className="grid grid-cols-2 md:flex md:flex-row md:justify-around mt-2 md:my-10">
+              <SiWorldhealthorganization className="text-5xl border-2 mx-auto rounded size-32 p-3 dark:text-gray-600 dark:hover:text-gray-900 hover:text-yellow-200" />
+              <MdOutlineWorkspacePremium className="text-5xl border-2 mx-auto rounded size-32 p-3 dark:text-gray-600 dark:hover:text-gray-900 hover:text-blue-200" />
+              <IoFastFoodOutline className="text-5xl border-2 rounded mx-auto size-32 p-3 dark:text-gray-600 dark:hover:text-gray-900 hover:text-red-200" />
+              <GiHealthCapsule className="text-5xl border-2 rounded mx-auto size-32 p-3 dark:text-gray-600 dark:hover:text-gray-900 hover:text-green-200" />
+              <RiHealthBookLine className="invisible md:visible mx-auto md:text-5xl border-2 md:size-32 rounded p-3 dark:text-gray-600 dark:hover:text-gray-900 hover:text-orange-200" />
             </div>
-            <p className="text-base lg:text-xl mt-5 dark:text-gray-600">
+            <p className="text-base lg:text-xl md:mt-5 dark:text-gray-600">
               Our vision at DietDetective is to revolutionize the way people
               approach nutrition by providing a comprehensive, user-friendly,
               and personalized platform for tracking and managing dietary
@@ -55,14 +55,14 @@ const About = () => {
           <h1 className="text-4xl mx-auto font-bold mb-4 mt-10 dark:text-gray-600">
             Founders
           </h1>
-          <div className="flex flex-row justify-around mt-16">
-            <div>
+          <div className="md:flex md:flex-row  justify-around mt-16">
+            <div className="text-center mb-16 md:mb-0">
               <img
                 src={sergio}
                 alt=""
                 width={300}
                 height={300}
-                className="contact-shadow"
+                className="contact-shadow mx-auto"
               />
               <p className="text-2xl mt-5 dark:text-gray-600">
                 Sergio Ardila-Alvarado
@@ -91,13 +91,13 @@ const About = () => {
                 </a>
               </div>
             </div>
-            <div>
+            <div className="mb-16 md:mb-0">
               <img
                 src={megan}
                 alt=""
                 width={300}
                 height={300}
-                className="contact-shadow"
+                className="contact-shadow mx-auto"
               />
               <p className="text-2xl mt-5 dark:text-gray-600">
                 Megan Schneider
@@ -126,13 +126,13 @@ const About = () => {
                 </a>
               </div>
             </div>
-            <div>
+            <div className="mb-16 md:mb-0">
               <img
                 src={travis}
                 alt=""
                 width={300}
                 height={300}
-                className="contact-shadow"
+                className="contact-shadow mx-auto"
               />
               <p className="text-2xl mt-5 dark:text-gray-600">Travis Umbel</p>
               <div className="flex flex-row justify-center mt-7">

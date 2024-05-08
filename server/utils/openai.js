@@ -14,7 +14,7 @@ async function getNutrition(userFoodInput) {
   console.log("NutritionPrompt", NutritionPrompt);
   const NutritionResponse = await openai.chat.completions.create({
     model: "gpt-3.5-turbo",
-    max_tokens: 350,
+    max_tokens: 500,
     messages: [
       {
         role: "system",
@@ -26,8 +26,26 @@ async function getNutrition(userFoodInput) {
       },
     ],
   });
+
   console.log("GPT RESPONSE", NutritionResponse.choices[0].message);
+
+  //return the JSON response
+  return NutritionResponse.choices[0].message;
 }
 
-const userFoodInput = "animal crackers";
+async function getNutritionForFoods(foodInputs) {
+  const nutritionData = [];
+  for (const foodInput of foodInputs) {
+    const nutritionResponse = await getNutrition(foodInput);
+    nutritionData.push({
+      food: foodInput,
+      nutrition: JSON.parse(nutritionResponse),
+    });
+  }
+  return nutritionData;
+}
+
+module.exports = getNutritionForFoods;
+
+const userFoodInput = ["animal crackers", "mac n cheese", "cheeseburger"];
 getNutrition(userFoodInput);

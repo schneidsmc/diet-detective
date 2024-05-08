@@ -1,8 +1,5 @@
 import React from "react";
-import sergio from "../assets/sergio.png";
-import { MdWork } from "react-icons/md";
-import { FaLinkedin } from "react-icons/fa";
-import { FaGithub } from "react-icons/fa";
+
 const About = () => {
   return (
     <div className="text-white max-w-[1200px] mx-auto my-12" id="about">

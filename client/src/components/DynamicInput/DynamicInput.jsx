@@ -15,7 +15,7 @@ function AddDynamicInput() {
   };
   const handleDelete = (i) => {
     const deleteVal = [...val];
-    deleteVal.splice(i, 1);
+    deleteVal.splice(i);
     setVal(deleteVal);
   };
   console.log(val, "data-");
@@ -24,19 +24,20 @@ function AddDynamicInput() {
       <form>
         <input
           type="text"
-          className="block rounded-lg mx-auto md:w-64"
+          className="block rounded-lg mx-auto md:w-64 text-black"
           placeholder="Your food"
         />
         <button type="button" onClick={handleAdd}>
-          <TbCirclePlus className="text-3xl mt-2 dark:text-gray-600" />
+          <TbCirclePlus className="text-3xl  mt-2 dark:text-gray-600" />
         </button>
         {val.map((data, i) => {
           return (
             <div>
               <input
+                value={data}
                 onChange={(e) => handleChange(e, i)}
                 type="text"
-                className="rounded-lg mx-auto "
+                className="rounded-lg mx-auto text-black"
                 placeholder="More food"
               />
               <button onClick={() => handleDelete(i)}>

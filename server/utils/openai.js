@@ -27,25 +27,28 @@ async function getNutrition(userFoodInput) {
     ],
   });
 
-  console.log("GPT RESPONSE", NutritionResponse.choices[0].message);
+  // console.log("GPT RESPONSE", NutritionResponse.choices[0].message);
+  console.log("Full Nutrition Respone Object", NutritionResponse);
 
   //return the JSON response
-  return NutritionResponse.choices[0].message;
+  return JSON.parse(NutritionResponse.choices[0].message);
 }
 
 async function getNutritionForFoods(foodInputs) {
   const nutritionData = [];
   for (const foodInput of foodInputs) {
     const nutritionResponse = await getNutrition(foodInput);
+    // console.log('nutrition response', nutritionResponse);
     nutritionData.push({
-      food: foodInput,
       nutrition: JSON.parse(nutritionResponse),
     });
   }
+  console.log("Hey look at me!");
+  console.log(nutritionData);
   return nutritionData;
 }
 
 module.exports = getNutritionForFoods;
 
 const userFoodInput = ["animal crackers", "mac n cheese", "cheeseburger"];
-getNutrition(userFoodInput);
+getNutritionForFoods(userFoodInput);

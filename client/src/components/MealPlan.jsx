@@ -16,7 +16,7 @@ const MealPlan = () => {
             </p>
             <p className="text-md dark:text-gray-600">Up to 8 items:</p>
 
-            <DynamicInput val={val} setval={setVal} className="block" />
+            <DynamicInput val={val} setVal={setVal} className="block" />
           </div>
         </div>
       </div>

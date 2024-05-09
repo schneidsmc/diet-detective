@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { TbCirclePlus } from "react-icons/tb";
 import { FaRegRectangleXmark } from "react-icons/fa6";
 
-function AddDynamicInput() {
+function AddDynamicInput({ val, setVal }) {
   // const [val, setVal] = useState([]);
   const handleAdd = () => {
     const newVal = [...val, []];

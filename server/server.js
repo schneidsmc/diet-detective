@@ -1,14 +1,29 @@
+require("dotenv").config();
+const cors = require("cors");
 const express = require("express");
 const { ApolloServer } = require("@apollo/server");
 const { expressMiddleware } = require("@apollo/server/express4");
 const path = require("path");
 const { authMiddleware } = require("./utils/auth");
+const getNutritionForFoods = require("./utils/openai");
 
 const { typeDefs, resolvers } = require("./schemas");
 const db = require("./config/connection");
 
 const PORT = process.env.PORT || 3001;
 const app = express();
+app.use(cors());
+// A simple endpoint that allows us to call the getNutritionForFoods function from react components without having to put openai.js on the frontend
+app.get("/openai", async (req, res) => {
+  try {
+    const responseFromOpenAI = await getNutritionForFoods(req.query.foodInputs);
+    res.json(responseFromOpenAI);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "An error occurred" });
+  }
+});
+
 const server = new ApolloServer({
   typeDefs,
   resolvers,
@@ -45,4 +60,5 @@ const startApolloServer = async () => {
 };
 
 //Call the async function to start the server
+console.log(PORT);
 startApolloServer();

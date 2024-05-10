@@ -4,6 +4,11 @@ const openai = new chatGpt({
   apiKey: process.env.OPENAPIKEY,
 });
 
+// import { openai as chatGpt} from "openai";
+// const openai = new chatGpt({
+//   apiKey: process.env.OPENAPIKEY,
+// });
+
 async function getNutrition(userFoodInput) {
   const NutritionPrompt = {
     prompt:
@@ -47,8 +52,7 @@ async function getNutritionForFoods(foodInputs) {
   console.log(nutritionData);
   return nutritionData;
 }
+// const userFoodInput = ["animal crackers", "mac n cheese", "cheeseburger"];
+// getNutritionForFoods(userFoodInput);
 
 module.exports = getNutritionForFoods;
-
-const userFoodInput = ["animal crackers", "mac n cheese", "cheeseburger"];
-getNutritionForFoods(userFoodInput);

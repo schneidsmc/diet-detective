@@ -2,6 +2,21 @@ import React, { useState } from "react";
 import { TbCirclePlus } from "react-icons/tb";
 import { FaRegRectangleXmark } from "react-icons/fa6";
 
+
+async function fetchDataFromOpenAI(foodInputs) {
+  try {
+    // API will use the base URL from environment variables (which we will put in .env once the site is hosted) OR localhost:3000
+    const baseURL = "http://localhost:3001";
+    const response = await fetch(`${baseURL}/openai/?foodInputs=${foodInputs}`);
+    console.log(response);
+    const data = await response.json();
+    console.log(data);
+  } catch (error) {
+    console.error("Error:", error);
+  }
+}
+
+
 function AddDynamicInput({ val, setVal }) {
   // const [val, setVal] = useState([]);
   const handleAdd = () => {
@@ -21,6 +36,17 @@ function AddDynamicInput({ val, setVal }) {
     const deleteVal = [...val];
     deleteVal.splice(i);
     setVal(deleteVal);
+  };
+
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
+    console.log("submit button pressed");
+    try {
+      const foods = await fetchDataFromOpenAI(val);
+      console.log(foods);
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   console.log(val, "data-");
@@ -52,6 +78,7 @@ function AddDynamicInput({ val, setVal }) {
         <button
           type="submit"
           className="block my-20 mx-auto text-3xl border-solid border-white dark:hover:bg-gray-800 dark:bg-gray-600 border-2 rounded-2xl py-3 pb-4 px-8 shadow-button font-bold"
+          onClick={handleFormSubmit}
         >
           Submit
         </button>

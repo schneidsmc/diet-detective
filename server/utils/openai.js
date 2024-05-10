@@ -4,18 +4,14 @@ const openai = new chatGpt({
   apiKey: process.env.OPENAPIKEY,
 });
 
-// import { openai as chatGpt} from "openai";
-// const openai = new chatGpt({
-//   apiKey: process.env.OPENAPIKEY,
-// });
-
 async function getNutrition(userFoodInput) {
   const NutritionPrompt = {
     prompt:
       "Respond only using this JSON object with the properties included in this JSON object.  Respond with only valid JSON",
-    question: `List the nutrition facts for ${userFoodInput} to include calories, protein, saturated fats, sodium, sugar, unsaturated fats, micronutrients and macronutrients. Micronutrients should include
-        calcium, iron, vitamin A and vitamin C. Macronutrients should include carbohydrates, fiber and total fats. Always use the generic brand nutrition information`,
+    question: `List the nutrition facts for ${userFoodInput} to include calories, protein, saturated fats, sodium, sugar, unsaturated fats, micronutrients and macronutrients.   Micronutrients should include
+        calcium, iron, vitamin A and vitamin C. Macronutrients should include carbohydrates, fiber and total fats. Always use the generic brand nutrition information and do not include the brand in the JSON.  Be sure to include the name of the food as "foodname" at the top of the JSON`,
   };
+
   console.log("NutritionPrompt", NutritionPrompt);
   const NutritionResponse = await openai.chat.completions.create({
     model: "gpt-3.5-turbo",
@@ -32,11 +28,14 @@ async function getNutrition(userFoodInput) {
     ],
   });
 
-  // console.log("GPT RESPONSE", NutritionResponse.choices[0].message);
-  console.log("Full Nutrition Respone Object", NutritionResponse);
+  console.log("GPT RESPONSE", NutritionResponse.choices[0].message);
+
+  const messageContent = NutritionResponse.choices[0].message.content;
+
+  console.log("message content:", messageContent);
 
   //return the JSON response
-  return JSON.stringify(NutritionResponse.choices[0].message);
+  return messageContent;
 }
 
 async function getNutritionForFoods(foodInputs) {

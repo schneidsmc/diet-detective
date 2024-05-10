@@ -2,10 +2,10 @@ import React, { useState, useEffect } from "react";
 import DynamicInput from "./DynamicInput/DynamicInput";
 
 const MealPlan = () => {
-  const [val, setVal] = useState([]);
+  const [foodInputVal, setFoodInputVal] = useState([]);
 
   useEffect(() => {
-    // Call openai function when val changes
+    // Call openai function when foodInputval changes
   });
   return (
     <div className="text-white max-w-[1200px] mx-auto my-12" id="about">
@@ -20,7 +20,11 @@ const MealPlan = () => {
             </p>
             <p className="text-md dark:text-gray-600">Up to 8 items:</p>
 
-            <DynamicInput val={val} setVal={setVal} className="block" />
+            <DynamicInput
+              foodInputVal={foodInputVal}
+              setFoodInputVal={setFoodInputVal}
+              className="block"
+            />
           </div>
         </div>
       </div>

@@ -12,6 +12,8 @@ import ReactDOM from "react-dom/client";
 import "./App.css";
 import App from "./App.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { ApolloProvider } from "@apollo/client";
+import client from "./utils/apollo-client.js";
 import Home from "./components/Home.jsx";
 import About from "./components/About";
 import Login from "./components/Login";
@@ -58,5 +60,13 @@ const router = createBrowserRouter([
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <RouterProvider router={router} />,
+  <ApolloProvider client={client}>
+    <RouterProvider router={router}>
+      <App />
+    </RouterProvider>
+  </ApolloProvider>,
 );
+
+// ReactDOM.createRoot(document.getElementById("root")).render(
+//   <RouterProvider router={router} />,
+// );

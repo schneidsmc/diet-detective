@@ -52,8 +52,7 @@ async function getNutritionForFoods(foodInputs) {
   console.log(nutritionData);
   return nutritionData;
 }
+// const userFoodInput = ["animal crackers", "mac n cheese", "cheeseburger"];
+// getNutritionForFoods(userFoodInput);
 
 module.exports = getNutritionForFoods;
-
-const userFoodInput = ["animal crackers", "mac n cheese", "cheeseburger"];
-getNutritionForFoods(userFoodInput);

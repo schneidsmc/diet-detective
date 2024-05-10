@@ -5,7 +5,7 @@ import { FaRegRectangleXmark } from "react-icons/fa6";
 async function fetchDataFromOpenAI(foodInputs) {
   try {
     // API will use the base URL from environment variables (which we will put in .env once the site is hosted) OR localhost:3000
-    const baseURL = "http://localhost:5173/MealPlan";
+    const baseURL = "http://localhost:3001";
     const response = await fetch(`${baseURL}/openai/?foodInputs=${foodInputs}`);
     console.log(response);
     const data = await response.json();

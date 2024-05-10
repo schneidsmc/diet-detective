@@ -12,7 +12,7 @@ const db = require("./config/connection");
 const PORT = process.env.PORT || 3001;
 const app = express();
 
-// A simple endpoint that allows us to call the getNutritionForFoods function from react components without having put openai.js on the frontend
+// A simple endpoint that allows us to call the getNutritionForFoods function from react components without having to put openai.js on the frontend
 app.get("/openai", async (req, res) => {
   try {
     const responseFromOpenAI = await getNutritionForFoods(req.query.foodInputs);

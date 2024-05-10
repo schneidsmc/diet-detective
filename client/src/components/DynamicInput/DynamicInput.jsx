@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { TbCirclePlus } from "react-icons/tb";
 import { FaRegRectangleXmark } from "react-icons/fa6";
 
+
 async function fetchDataFromOpenAI(foodInputs) {
   try {
     // API will use the base URL from environment variables (which we will put in .env once the site is hosted) OR localhost:3000
@@ -14,6 +15,7 @@ async function fetchDataFromOpenAI(foodInputs) {
     console.error("Error:", error);
   }
 }
+
 
 function AddDynamicInput({ val, setVal }) {
   // const [val, setVal] = useState([]);

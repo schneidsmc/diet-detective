@@ -16,7 +16,9 @@ app.use(cors());
 // A simple endpoint that allows us to call the getNutritionForFoods function from react components without having to put openai.js on the frontend
 app.get("/openai", async (req, res) => {
   try {
-    const responseFromOpenAI = await getNutritionForFoods(req.query.foodInputs);
+    //Parse the string back into an array
+    const foodInputs = JSON.parse(req.query.foodInputs);
+    const responseFromOpenAI = await getNutritionForFoods(foodInputs);
     res.json(responseFromOpenAI);
   } catch (error) {
     console.error(error);

@@ -1,6 +1,29 @@
 import React from "react";
 
+//Noted out the following imports because I was getting some bugs from not technically using them yet
+// import { Link } from 'react-router-dom';
+// import Auth from '../utils/auth';
+import { useMutation } from "@apollo/client";
+
+import { ADD_PROFILE } from "../utils/mutations";
+
 const Signup = () => {
+  const [formState, setFormState] = useState({
+    name: "",
+    email: "",
+    password: "",
+  });
+  const [addProfile, { error, data }] = useMutation(ADD_PROFILE);
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+
+    setFormState({
+      ...formState,
+      [name]: value,
+    });
+  };
+
   return (
     <div className="text-white text-center mt-20 ">
       <h1 className="text-5xl font-bold dark:text-gray-600">

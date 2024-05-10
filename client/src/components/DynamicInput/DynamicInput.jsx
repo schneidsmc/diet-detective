@@ -20,6 +20,7 @@ async function fetchDataFromOpenAI(foodInputs) {
 
 function AddDynamicInput({ foodInputVal, setFoodInputVal }) {
   // const [val, setVal] = useState([]);
+  const [fetchedData, setFetchedData] = useState(null); // State to store fetched data
   const handleAdd = () => {
     const newVal = [...foodInputVal, []];
     if (newVal.length < 9) {
@@ -35,7 +36,7 @@ function AddDynamicInput({ foodInputVal, setFoodInputVal }) {
 
   const handleDelete = (i) => {
     const deleteVal = [...foodInputVal];
-    deleteVal.splice(i);
+    deleteVal.splice(i, 1);
     setFoodInputVal(deleteVal);
   };
 
@@ -46,6 +47,7 @@ function AddDynamicInput({ foodInputVal, setFoodInputVal }) {
     try {
       const foods = await fetchDataFromOpenAI(foodInputVal);
       console.log(foods);
+      setFetchedData(foods); // Update the state with fetched data
     } catch (err) {
       console.error(err);
     }
@@ -84,6 +86,10 @@ function AddDynamicInput({ foodInputVal, setFoodInputVal }) {
         >
           Submit
         </button>
+
+        <div className="display-data w-full">
+          {fetchedData && <pre>{JSON.stringify(fetchedData, null, 2)}</pre>}
+        </div>
       </form>
     </>
   );

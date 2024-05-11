@@ -13,7 +13,10 @@ const Signup = () => {
     email: "",
     password: "",
   });
-  const [addProfile, { error, data }] = useMutation(ADD_PROFILE);
+  const [addProfile, { data, loading, error }] = useMutation(ADD_PROFILE);
+
+  if (loading) return "Loading...";
+  if (error) return `Error! ${error.message}`;
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -46,15 +49,19 @@ const Signup = () => {
         <p className="mt-16 text-xl pr-52 mb-2 dark:text-gray-600">Username:</p>
         <input
           type="text"
+          name="username"
           className="rounded-lg w-80 text-black"
           placeholder="E.g. Sergio123"
+          onChange={handleChange}
         />
 
         <p className="mt-5 text-xl pr-64 mb-2 dark:text-gray-600">Email:</p>
         <input
           type="text"
+          name="email"
           className="rounded-lg w-80 text-black"
           placeholder="Example123@gmail.com"
+          onChange={handleChange}
         />
 
         <p className="mt-5 text-xl pr-56 mb-2 dark:text-gray-600">Password:</p>

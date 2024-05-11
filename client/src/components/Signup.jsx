@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 //Noted out the following imports because I was getting some bugs from not technically using them yet
 // import { Link } from 'react-router-dom';
@@ -9,11 +9,14 @@ import { ADD_PROFILE } from "../utils/mutations";
 
 const Signup = () => {
   const [formState, setFormState] = useState({
-    name: "",
+    username: "",
     email: "",
     password: "",
   });
-  const [addProfile, { error, data }] = useMutation(ADD_PROFILE);
+  const [addProfile, { data, loading, error }] = useMutation(ADD_PROFILE);
+
+  if (loading) return "Loading...";
+  if (error) return `Error! ${error.message}`;
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -24,25 +27,41 @@ const Signup = () => {
     });
   };
 
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      const { data } = await addProfile({
+        variables: { ...formState },
+      });
+      console.log(data);
+    } catch (error) {
+      console.error("Mutation Error:", error);
+    }
+  };
+
   return (
     <div className="text-white text-center mt-20 ">
       <h1 className="text-5xl font-bold dark:text-gray-600">
         Experience the power of <br />
         wellness in the palm of your hand
       </h1>
-      <form action="">
+      <form onSubmit={handleSubmit}>
         <p className="mt-16 text-xl pr-52 mb-2 dark:text-gray-600">Username:</p>
         <input
           type="text"
+          name="username"
           className="rounded-lg w-80 text-black"
           placeholder="E.g. Sergio123"
+          onChange={handleChange}
         />
 
         <p className="mt-5 text-xl pr-64 mb-2 dark:text-gray-600">Email:</p>
         <input
           type="text"
+          name="email"
           className="rounded-lg w-80 text-black"
           placeholder="Example123@gmail.com"
+          onChange={handleChange}
         />
 
         <p className="mt-5 text-xl pr-56 mb-2 dark:text-gray-600">Password:</p>
@@ -85,7 +104,7 @@ const Signup = () => {
           </select>
 
           <label
-            for="quantity"
+            htmlFor="quantity"
             className="inline-block mt-5 text-xl mb-1 mr-2 ml-5 dark:text-gray-600"
           >
             Age:
@@ -94,14 +113,14 @@ const Signup = () => {
             placeholder="22"
             className="rounded-lg text-black h-8"
             type="number"
-            id="quantity"
+            id="age"
             name="quantity"
             min="1"
             max="99"
           />
 
           <label
-            for="quantity"
+            htmlFor="quantity"
             className="inline-block mt-5 text-xl mb-1 mr-2 ml-5 dark:text-gray-600"
           >
             Height:
@@ -110,7 +129,7 @@ const Signup = () => {
             placeholder="6.4"
             className="rounded-lg text-black h-8"
             type="number"
-            id="quantity"
+            id="height"
             name="quantity"
             min="1"
             max="8.12"
@@ -118,7 +137,7 @@ const Signup = () => {
           <p className="inline-block ml-1 dark:text-gray-600">ft.</p>
 
           <label
-            for="quantity"
+            htmlFor="quantity"
             className="inline-block mt-5 text-xl mb-1 mr-2 ml-5 dark:text-gray-600"
           >
             Weight:
@@ -127,7 +146,7 @@ const Signup = () => {
             placeholder="165"
             className="rounded-lg text-black h-8"
             type="number"
-            id="quantity"
+            id="weight"
             name="quantity"
             min="1"
             max="400"

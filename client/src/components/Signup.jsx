@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 //Noted out the following imports because I was getting some bugs from not technically using them yet
 // import { Link } from 'react-router-dom';
-// import Auth from '../utils/auth';
+import Auth from "../utils/auth";
 import { useMutation } from "@apollo/client";
 
 import { ADD_PROFILE } from "../utils/mutations";

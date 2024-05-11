@@ -9,7 +9,7 @@ import { ADD_PROFILE } from "../utils/mutations";
 
 const Signup = () => {
   const [formState, setFormState] = useState({
-    name: "",
+    username: "",
     email: "",
     password: "",
   });

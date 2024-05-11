@@ -11,7 +11,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./App.css";
 import App from "./App.jsx";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 // import { ApolloProvider, ApolloClient, InMemoryCache, createHttpLink } from "@apollo/client";
 // import { setContext } from '@apollo/client/link/context';
 import Home from "./components/Home.jsx";
@@ -21,66 +21,21 @@ import Signup from "./components/Signup";
 import Profile from "./components/Profile";
 import MealPlan from "./components/MealPlan";
 
-// const httpLink = createHttpLink({
-//   uri: '/graphql',
-// });
+const Main = () => {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<App />}>
+          <Route index element={<Home />} />
+          <Route path="/About" element={<About />} />
+          <Route path="/Login" element={<Login />} />
+          <Route path="/Signup" element={<Signup />} />
+          <Route path="/Profile" element={<Profile />} />
+          <Route path="/MealPlan" element={<MealPlan />} />
+        </Route>
+      </Routes>
+    </Router>
+  );
+};
 
-// const authLink = setContext((_, { headers }) => {
-//   // get the authentication token from local storage if it exists
-//   const token = localStorage.getItem('id_token');
-//   // return the headers to the context so httpLink can read them
-//   return {
-//     headers: {
-//       ...headers,
-//       authorization: token ? `Bearer ${token}` : '',
-//     }
-//   }
-// })
-
-// //Update the existing client variable
-// client.link = authLink.concat(httpLink);
-
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <App />,
-    children: [
-      {
-        index: true,
-        element: <Home />,
-      },
-      {
-        path: "/About",
-        element: <About />,
-      },
-      {
-        path: "/Login",
-        element: <Login />,
-      },
-      {
-        path: "/Signup",
-        element: <Signup />,
-      },
-      {
-        path: "/Profile",
-        element: <Profile />,
-      },
-      {
-        path: "/MealPlan",
-        element: <MealPlan />,
-      },
-    ],
-  },
-]);
-
-// ReactDOM.createRoot(document.getElementById("root")).render(
-//   <ApolloProvider client={client}>
-//     <RouterProvider router={router}>
-//       <App />
-//     </RouterProvider>
-//   </ApolloProvider>,
-// );
-
-ReactDOM.createRoot(document.getElementById("root")).render(
-  <RouterProvider router={router} />,
-);
+ReactDOM.createRoot(document.getElementById("root")).render(<Main />);

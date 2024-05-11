@@ -6,18 +6,9 @@ import Navbar from "./components/Navbar.jsx";
 import Footer from "./components/Footer.jsx";
 import { RiMoonClearLine } from "react-icons/ri";
 import { FiSun } from "react-icons/fi";
-import {
-  ApolloProvider,
-  ApolloClient,
-  InMemoryCache,
-  createHttpLink,
-} from "@apollo/client";
+import { ApolloProvider, ApolloClient, InMemoryCache } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
 // import { useEffect } from "react"
-
-const httpLink = createHttpLink({
-  uri: "/graphql",
-});
 
 const authLink = setContext((_, { headers }) => {
   // get the authentication token from local storage if it exists
@@ -32,7 +23,7 @@ const authLink = setContext((_, { headers }) => {
 });
 
 const client = new ApolloClient({
-  link: authLink.concat(httpLink),
+  uri: "http://localhost:3001/graphql",
   cache: new InMemoryCache(),
 });
 

@@ -25,6 +25,7 @@ const Signup = () => {
       ...formState,
       [name]: value,
     });
+    console.log(formState);
   };
 
   const handleSubmit = async (event) => {
@@ -33,6 +34,7 @@ const Signup = () => {
       const { data } = await addProfile({
         variables: { ...formState },
       });
+      Auth.login(data.addProfile.token);
       console.log(data);
     } catch (error) {
       console.error("Mutation Error:", error);
@@ -67,8 +69,10 @@ const Signup = () => {
         <p className="mt-5 text-xl pr-56 mb-2 dark:text-gray-600">Password:</p>
         <input
           type="password"
+          name="password"
           className="rounded-lg w-80 text-black"
           placeholder="Password"
+          onChange={handleChange}
         />
 
         <p className="mt-5 text-xl pr-36 mb-2 dark:text-gray-600">
@@ -76,8 +80,10 @@ const Signup = () => {
         </p>
         <input
           type="password"
+          name="confirmpassword"
           className="rounded-lg w-80 text-black"
           placeholder="Confirm password"
+          onChange={handleChange}
         />
 
         <div className="block mt-5">

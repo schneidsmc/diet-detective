@@ -1,24 +1,66 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import Auth from "../utils/auth";
+import { useMutation } from "@apollo/client";
+import { LOGIN_USER } from "../utils/mutations";
 
 const Login = () => {
+  const [formState, setFormState] = useState({
+    email: "",
+    password: "",
+  });
+  const [loginUser, { data, loading, error }] = useMutation(LOGIN_USER);
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+
+    setFormState({
+      ...formState,
+      [name]: value,
+    });
+  };
+
+  useEffect(() => {
+    console.log(formState);
+  }, [formState]);
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    console.log(formState);
+    console.log("form submit button hit");
+    try {
+      const { data } = await loginUser({
+        variables: { ...formState },
+      });
+      Auth.login(data.login.token);
+      console.log(data);
+      alert("Logged in successfully!");
+    } catch (error) {
+      console.error("Mutation Error:", error);
+    }
+  };
+
   return (
     <div className="text-white text-center mt-20 ">
       <h1 className="text-5xl font-bold pb-12 dark:text-gray-600">
         Welcome back!
       </h1>
-      <form action="">
+      <form onSubmit={handleSubmit}>
         <p className="mt-5 text-xl pr-64 mb-2 dark:text-gray-600">Email:</p>
         <input
           type="text"
+          name="email"
           className="rounded-lg w-80 text-black"
           placeholder="Example123@gmail.com"
+          onChange={handleChange}
         />
 
         <p className="mt-5 text-xl pr-56 mb-2 dark:text-gray-600">Password:</p>
         <input
           type="password"
+          name="password"
           className="rounded-lg w-80 text-black"
           placeholder="Password"
+          onChange={handleChange}
         />
         <p className="mt-3 dark:text-gray-600">
           Don’t have an account yet?{" "}

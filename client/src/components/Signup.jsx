@@ -14,9 +14,6 @@ const Signup = () => {
   });
   const [addUser, { data, loading, error }] = useMutation(ADD_USER);
 
-  // if (loading) return "Loading...";
-  // if (error) return `Error! ${error.message}`;
-
   const handleChange = (event) => {
     const { name, value } = event.target;
 
@@ -38,7 +35,7 @@ const Signup = () => {
       const { data } = await addUser({
         variables: { ...formState },
       });
-      // Auth.login(data.addProfile.token);
+      Auth.login(data.addProfile.token);
       console.log(data);
     } catch (error) {
       console.error("Mutation Error:", error);
@@ -90,7 +87,7 @@ const Signup = () => {
           onChange={handleChange}
         /> */}
 
-        <div className="block mt-5">
+        {/* <div className="block mt-5">
           <label
             htmlFor=""
             className="inline-block mt-5 text-xl mb-1 mr-2 dark:text-gray-600"
@@ -162,7 +159,7 @@ const Signup = () => {
             max="400"
           />
           <p className="inline-block ml-1 dark:text-gray-600">lbs.</p>
-        </div>
+        </div> */}
         <p className="mt-4 dark:text-gray-600">
           Do you already have an account?{" "}
           <a className=" text-red-400 font-bold" href="/Login">

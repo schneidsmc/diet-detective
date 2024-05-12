@@ -24,11 +24,42 @@ export const LOGIN_USER = gql`
   }
 `;
 
+
 export const CREATE_MEALPLAN = gql`
   mutation createMealPlan($date: String!) {
     createMealPlan(date: $date) {
       _id
       date
+      }
+      }`
+export const ADD_FOOD_TO_MEAL_PLAN = gql`
+  mutation addFoodToMealPlan($mealPlanId: ID!, $foodId: ID!) {
+    addFoodToMealPlan(mealPlanId: $mealPlanId, foodId: $foodId) {
+      _id
+      date
+      foods {
+        _id
+        name
+        categories {
+          calories
+          sodium
+          sugar
+          saturated_fats
+          unsaturated_fats
+          protein
+          macronutrients {
+            carbohydrates
+            fiber
+            total_fats
+          }
+          micronutrients {
+            vitamin_A
+            vitamin_C
+            calcium
+            iron
+          }
+        }
+      }
     }
   }
 `;

@@ -35,20 +35,23 @@ const Navbar = () => {
             Home
           </Link>
         </li>
-
-        <li className="p-5 hover:font-bold text-2xl navbar-shadow">
-          <Link
-            to="/MealPlan"
-            className={
-              currentPage === "/MealPlan"
-                ? "nav-link active text-black dark:text-gray-100"
-                : "nav-link"
-            }
-          >
-            {" "}
-            MealPlan
-          </Link>
-        </li>
+        {/* Conditionally render "MealPlan" link if user is logged in*/}
+        {isLoggedIn && (
+          <li className="p-5 hover:font-bold text-2xl navbar-shadow">
+            <Link
+              to="/MealPlan"
+              className={
+                currentPage === "/MealPlan"
+                  ? "nav-link active text-black dark:text-gray-100"
+                  : "nav-link"
+              }
+            >
+              {" "}
+              MealPlan
+            </Link>
+          </li>
+          ///HELP HERE
+        )}
 
         <li className="p-5 text-shadow hover:font-bold text-2xl">
           <Link

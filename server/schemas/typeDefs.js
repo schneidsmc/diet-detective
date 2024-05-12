@@ -66,7 +66,8 @@ const typeDefs = `
         addUser(username: String!, email: String!, password: String!): Auth
         login(email: String!, password: String!): Auth
         addUserInfo(height: String!, weight: String!, age: Int!, sex: String!): User
-        addFoodToMealPlan(mealPlanId: ID!, foodId: ID!): Mealplan
+        addFoodToMealPlan(mealPlanId: ID!, foodId: [ID!]!): Mealplan
+        createMealPlan(date: String!): Mealplan!
     }
     `;
 

@@ -101,6 +101,29 @@ const resolvers = {
       }
       throw new AuthenticationError("Please login to save to Meal Plan.");
     },
+    createMealPlan: async (parent, { date }, context) => {
+      if (!context.user) {
+        throw new Error("Authentication required.");
+      }
+
+      try {
+        const currentDate = new Date().toISOString().split("T")[0];
+        const formattedDate = date || currentDate;
+
+        const mealPlan = await Mealplan.create({ date: formattedDate });
+
+        //Update the user document in the database to add this mealPlan
+        await User.findByIdAndUpdate(
+          context.user._id, //User ID
+          { mealPlan: mealPlan._id },
+          { new: true },
+        );
+        return mealPlan;
+      } catch (error) {
+        console.error("Error creating meal plan:", error);
+        throw new Error("Failed to create meal Plan.");
+      }
+    },
   },
 };
 

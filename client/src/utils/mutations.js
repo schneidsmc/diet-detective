@@ -23,3 +23,12 @@ export const LOGIN_USER = gql`
     }
   }
 `;
+
+export const CREATE_MEALPLAN = gql`
+  mutation createMealPlan($date: String!) {
+    createMealPlan(date: $date) {
+      _id
+      date
+    }
+  }
+`;

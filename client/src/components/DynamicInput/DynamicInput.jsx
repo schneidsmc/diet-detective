@@ -48,6 +48,7 @@ function AddDynamicInput({ foodInputVal, setFoodInputVal }) {
       const foods = await fetchDataFromOpenAI(foodInputVal);
       console.log(foods);
       setFetchedData(foods); // Update the state with fetched data
+      console.log("Fetched Foods", fetchedData);
     } catch (err) {
       console.error(err);
     }

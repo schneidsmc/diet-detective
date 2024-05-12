@@ -1,7 +1,4 @@
 import React from "react";
-// import ReactDOM from "react-dom/client";
-// import App from "./App.jsx";
-// import "./index.css";
 
 // ReactDOM.createRoot(document.getElementById("root")).render(
 //   <React.StrictMode>
@@ -20,6 +17,7 @@ import Login from "./components/Login";
 import Signup from "./components/Signup";
 import Profile from "./components/Profile";
 import MealPlan from "./components/MealPlan";
+import withAuth from "./utils/authContext.jsx";
 
 const Main = () => {
   return (
@@ -30,8 +28,11 @@ const Main = () => {
           <Route path="/About" element={<About />} />
           <Route path="/Login" element={<Login />} />
           <Route path="/Signup" element={<Signup />} />
+          {/* Wrap Profile and Mealplan routes with withAuth component */}
           <Route path="/Profile" element={<Profile />} />
-          <Route path="/MealPlan" element={<MealPlan />} />
+          {/* <Route path="/Profile" element={withAuth(Profile)} />  */}
+          <Route path="/Mealplan" element={<MealPlan />} />
+          {/* <Route path="/MealPlan" element={withAuth(MealPlan)} />  */}
         </Route>
       </Routes>
     </Router>

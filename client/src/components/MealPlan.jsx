@@ -1,12 +1,23 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import DynamicInput from "./DynamicInput/DynamicInput";
+import { useAuth } from "../utils/authContext";
 
 const MealPlan = () => {
   const [foodInputVal, setFoodInputVal] = useState([]);
+  const { isLoggedIn, login, logout } = useAuth();
+  const navigate = useNavigate();
 
   useEffect(() => {
     // Call openai function when foodInputval changes
   });
+
+  // Redirect to login page if user is not logged in
+  useEffect(() => {
+    if (!isLoggedIn) {
+      navigate("/login");
+    }
+  }, [isLoggedIn, navigate]);
   return (
     <div className="text-white max-w-[1200px] mx-auto my-12" id="about">
       <div className="sm:py-16">

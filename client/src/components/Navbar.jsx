@@ -2,12 +2,15 @@ import React, { useState } from "react";
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 import { Link, useLocation } from "react-router-dom";
 import { CgProfile } from "react-icons/cg";
+import { useAuth } from "../utils/authContext";
 import "./../App.css";
 import logo from "../assets/DIETLOGO4.png";
 
 const Navbar = () => {
   const [nav, setNav] = useState(false);
   const currentPage = useLocation().pathname;
+  const { isLoggedIn, logout } = useAuth();
+
   const handleNav = () => {
     setNav(!nav);
   };
@@ -79,18 +82,27 @@ const Navbar = () => {
             className="py-2 text-sm text-white dark:text-gray-200"
             aria-labelledby="dropdownDefaultButton"
           >
-            <li className="p-5 text-lg hover:text-gray-500 hover:text-xl options hover:font-bold">
-              <Link
-                to="/Login"
-                className={
-                  currentPage === "/Login"
-                    ? "nav-link active text-black dark:text-gray-100"
-                    : "nav-link"
-                }
-              >
-                Login
-              </Link>
-            </li>
+            {/* Render "Logout" button if user is logged in */}
+            {isLoggedIn ? (
+              <li className="p-5 text-shadow hover:font-bold text-2x1">
+                <button className="nav-link" onClick={logout}>
+                  Logout
+                </button>
+              </li>
+            ) : (
+              <li className="p-5 text-lg hover:text-gray-500 hover:text-xl options hover:font-bold">
+                <Link
+                  to="/Login"
+                  className={
+                    currentPage === "/Login"
+                      ? "nav-link active text-black dark:text-gray-100"
+                      : "nav-link"
+                  }
+                >
+                  Login
+                </Link>
+              </li>
+            )}
             <li className="p-5 text-lg hover:text-gray-500 hover:text-xl options hover:font-bold">
               <Link
                 to="/Signup"

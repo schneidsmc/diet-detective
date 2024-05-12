@@ -34,6 +34,7 @@ const Login = () => {
       Auth.login(data.login.token);
       console.log(data);
       alert("Logged in successfully!");
+      window.location.assign("/");
     } catch (error) {
       console.error("Mutation Error:", error);
     }

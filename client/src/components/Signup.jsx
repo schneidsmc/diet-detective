@@ -1,11 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 //Noted out the following imports because I was getting some bugs from not technically using them yet
 // import { Link } from 'react-router-dom';
-// import Auth from '../utils/auth';
+import Auth from "../utils/auth";
 import { useMutation } from "@apollo/client";
-
-import { ADD_PROFILE } from "../utils/mutations";
+import { ADD_USER } from "../utils/mutations";
 
 const Signup = () => {
   const [formState, setFormState] = useState({
@@ -13,10 +12,7 @@ const Signup = () => {
     email: "",
     password: "",
   });
-  const [addProfile, { data, loading, error }] = useMutation(ADD_PROFILE);
-
-  if (loading) return "Loading...";
-  if (error) return `Error! ${error.message}`;
+  const [addUser, { data, loading, error }] = useMutation(ADD_USER);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -27,12 +23,19 @@ const Signup = () => {
     });
   };
 
+  useEffect(() => {
+    console.log(formState);
+  }, [formState]);
+
   const handleSubmit = async (event) => {
     event.preventDefault();
+    console.log(formState);
+    console.log("form submit button hit");
     try {
-      const { data } = await addProfile({
+      const { data } = await addUser({
         variables: { ...formState },
       });
+      Auth.login(data.addProfile.token);
       console.log(data);
     } catch (error) {
       console.error("Mutation Error:", error);
@@ -67,20 +70,24 @@ const Signup = () => {
         <p className="mt-5 text-xl pr-56 mb-2 dark:text-gray-600">Password:</p>
         <input
           type="password"
+          name="password"
           className="rounded-lg w-80 text-black"
           placeholder="Password"
+          onChange={handleChange}
         />
 
-        <p className="mt-5 text-xl pr-36 mb-2 dark:text-gray-600">
+        {/* <p className="mt-5 text-xl pr-36 mb-2 dark:text-gray-600">
           Confirm password:
         </p>
         <input
           type="password"
+          name="confirmpassword"
           className="rounded-lg w-80 text-black"
           placeholder="Confirm password"
-        />
+          onChange={handleChange}
+        /> */}
 
-        <div className="block mt-5">
+        {/* <div className="block mt-5">
           <label
             htmlFor=""
             className="inline-block mt-5 text-xl mb-1 mr-2 dark:text-gray-600"
@@ -152,7 +159,7 @@ const Signup = () => {
             max="400"
           />
           <p className="inline-block ml-1 dark:text-gray-600">lbs.</p>
-        </div>
+        </div> */}
         <p className="mt-4 dark:text-gray-600">
           Do you already have an account?{" "}
           <a className=" text-red-400 font-bold" href="/Login">

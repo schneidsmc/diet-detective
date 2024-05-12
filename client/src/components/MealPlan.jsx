@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import DynamicInput from "./DynamicInput/DynamicInput";
 
-const MealPlan = () => {
+const MealPlan = ({ userToken }) => {
   const [foodInputVal, setFoodInputVal] = useState([]);
 
   useEffect(() => {
@@ -23,6 +23,7 @@ const MealPlan = () => {
             <DynamicInput
               foodInputVal={foodInputVal}
               setFoodInputVal={setFoodInputVal}
+              userToken={userToken}
               className="block"
             />
           </div>

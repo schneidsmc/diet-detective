@@ -2,11 +2,18 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import DynamicInput from "./DynamicInput/DynamicInput";
 import { useAuth } from "../utils/authContext";
+import CreateMealPlan from "./MealPlanCrud/CreateMealPlan";
 
 const MealPlan = ({ userToken }) => {
   const [foodInputVal, setFoodInputVal] = useState([]);
   const { isLoggedIn, login, logout } = useAuth();
+  // State variable to track dynamicInput button click
+  const [showCreateMealPlan, setShowCreateMealPlan] = useState(false);
   const navigate = useNavigate();
+
+  const handleDataReceived = () => {
+    setShowCreateMealPlan(true); //Set the state to true when data is received
+  };
 
   useEffect(() => {
     // Call openai function when foodInputval changes
@@ -30,13 +37,15 @@ const MealPlan = ({ userToken }) => {
               Add your food for today:{" "}
             </p>
             <p className="text-md dark:text-gray-600">Up to 8 items:</p>
-
             <DynamicInput
               foodInputVal={foodInputVal}
               setFoodInputVal={setFoodInputVal}
+              onDataReceived={handleDataReceived}
               userToken={userToken}
               className="block"
             />
+            {showCreateMealPlan && <CreateMealPlan />}{" "}
+            {/*Render CreateMealPlan*/}
           </div>
         </div>
       </div>

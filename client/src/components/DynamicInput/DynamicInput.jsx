@@ -20,7 +20,9 @@ async function fetchDataFromOpenAI(foodInputs) {
   }
 }
 
-function AddDynamicInput({ foodInputVal, setFoodInputVal, userToken }) {
+
+function AddDynamicInput({ foodInputVal, setFoodInputVal, onDataReceived, userToken }) {
+
   // const [val, setVal] = useState([]);
   const [fetchedData, setFetchedData] = useState(null); // State to store fetched data
   const [savedToMealPlan, setSavedToMealPlan] = useState(false);
@@ -131,11 +133,11 @@ function AddDynamicInput({ foodInputVal, setFoodInputVal, userToken }) {
   //TODO: This only console logs the foods right now.  We need to be able to save the foods object in state so that we can render it and save it.
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    console.log("submit button pressed");
     try {
       const foods = await fetchDataFromOpenAI(foodInputVal);
       console.log(foods);
       setFetchedData(foods); // Update the state with fetched data
+      onDataReceived(); //Trigger the onDataReceived function passed in from Mealplan.jsx to trigger the button appearing
     } catch (err) {
       console.error(err);
     }

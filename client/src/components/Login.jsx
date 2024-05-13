@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Auth from "../utils/auth";
 import { useMutation } from "@apollo/client";
 import { LOGIN_USER } from "../utils/mutations";
@@ -19,24 +19,21 @@ const Login = () => {
     });
   };
 
-  useEffect(() => {
-    console.log(formState);
-  }, [formState]);
-
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(formState);
-    console.log("form submit button hit");
+
     try {
       const { data } = await loginUser({
         variables: { ...formState },
       });
+
       Auth.login(data.login.token);
       console.log(data);
       alert("Logged in successfully!");
       window.location.assign("/");
     } catch (error) {
-      console.error("Mutation Error:", error);
+      console.error("Login Error:", error);
+      // Handle login error (e.g., display error message)
     }
   };
 

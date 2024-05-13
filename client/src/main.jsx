@@ -1,4 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
+// import ReactDOM from "react-dom/client";
+// import App from "./App.jsx";
+// import "./index.css";
+
 
 // ReactDOM.createRoot(document.getElementById("root")).render(
 //   <React.StrictMode>
@@ -8,7 +12,13 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./App.css";
 import App from "./App.jsx";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
+// import { BrowserRouter as Router, Route, Switch, Navigate } from "react-router-dom";
 // import { ApolloProvider, ApolloClient, InMemoryCache, createHttpLink } from "@apollo/client";
 // import { setContext } from '@apollo/client/link/context';
 import Home from "./components/Home.jsx";
@@ -20,7 +30,21 @@ import MealPlan from "./components/MealPlan";
 import AuthProvider from "./utils/authContext.jsx";
 
 const Main = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  // Simulated login logic
+  const handleLogin = (email, password) => {
+    // Simulate authentication
+    if (email === "example@gmail.com" && password === "password") {
+      setIsLoggedIn(true);
+    } else {
+      // If authentication fails, you might want to display an error message
+      console.log("Invalid credentials. Please try again.");
+    }
+  };
+
   return (
+
     <AuthProvider>
       <Router>
         <Routes>

@@ -164,7 +164,7 @@ function AddDynamicInput({
                 onChange={(e) => handleChange(e, i)}
                 type="text"
                 className="rounded-lg mx-auto text-black"
-                placeholder="More food"
+                placeholder="Add food"
               />
               <button onClick={() => handleDelete(i)}>
                 <FaRegRectangleXmark className="ml-5 mt-6 text-2xl text-red-600" />
@@ -175,15 +175,68 @@ function AddDynamicInput({
 
         <button
           type="submit"
-          className="block my-20 mx-auto text-3xl border-solid border-white dark:hover:bg-gray-800 dark:bg-gray-600 border-2 rounded-2xl py-3 pb-4 px-8 shadow-button font-bold"
+          className="block mt-10 mb-5 mx-auto text-3xl border-solid border-white dark:hover:bg-gray-800 dark:bg-gray-600 border-2 rounded-2xl py-3 pb-4 px-8 shadow-button font-bold"
           onClick={handleFormSubmit}
         >
           Submit
         </button>
 
-        <div className="display-data w-full">
+        {/* <div className="display-data w-fit mx-auto text-center left-11 background-mine divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 mb-10 pr-10">
           {fetchedData && <pre>{JSON.stringify(fetchedData, null, 2)}</pre>}
+        </div> */}
+
+        <div className="display-data w-fit mx-auto text-center left-11 background-mine divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 mb-10 px-10 py-5">
+          {fetchedData && (
+            <pre>
+              {Object.entries(fetchedData).map(([key, value]) => (
+                <div key={key}>
+                  {key !== "nutrition" && key !== "nutrition_facts" && (
+                    <div></div>
+                  )}
+                  {typeof value === "object" &&
+                  key !== "nutrition" &&
+                  key !== "nutrition_facts" ? (
+                    Object.entries(value).map(([subKey, subValue]) => (
+                      <div key={subKey}>
+                        <div className="text-2xl">{subKey}:</div>
+                        {typeof subValue === "object" && (
+                          <div>
+                            {Object.entries(subValue).map(
+                              ([subSubKey, subSubValue]) => (
+                                <div key={subSubKey}>
+                                  <div className="wrapping flex-wrap">
+                                    {subSubKey}: {foodInputVal}
+                                  </div>
+                                  {typeof subSubValue === "object" && (
+                                    <div>
+                                      {Object.entries(subSubValue).map(
+                                        ([subSubSubKey, subSubSubValue]) => (
+                                          <div key={subSubSubKey}>
+                                            <div>
+                                              {subSubSubKey}:{" "}
+                                              {JSON.stringify(subSubSubValue)}
+                                            </div>
+                                          </div>
+                                        ),
+                                      )}
+                                    </div>
+                                  )}
+                                </div>
+                              ),
+                            )}
+                          </div>
+                        )}
+                      </div>
+                    ))
+                  ) : (
+                    <div>{value}</div>
+                  )}
+                </div>
+              ))}
+            </pre>
+          )}
         </div>
+
         <button
           type="button"
           onClick={handleSaveToMealPlan}

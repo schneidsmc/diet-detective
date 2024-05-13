@@ -44,7 +44,7 @@ const MealPlan = ({ userToken }) => {
               userToken={userToken}
               className="block"
             />
-            {showCreateMealPlan && <CreateMealPlan />}{" "}
+            {showCreateMealPlan && <CreateMealPlan userToken={userToken} />}{" "}
             {/*Render CreateMealPlan*/}
           </div>
         </div>

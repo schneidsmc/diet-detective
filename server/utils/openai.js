@@ -1,7 +1,7 @@
 require("dotenv").config();
 const chatGpt = require("openai");
 const openai = new chatGpt({
-  apiKey: process.env.OPENAPIKEY,
+  apiKey: process.env.OPEN_API_KEY,
 });
 
 async function getNutrition(userFoodInput) {

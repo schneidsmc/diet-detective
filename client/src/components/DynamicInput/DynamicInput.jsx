@@ -45,10 +45,18 @@ function AddDynamicInput({
           "Content-Type": "application/json",
           Authorization: `Bearer ${userToken}`,
         },
+
         body: JSON.stringify({
           query: `
           query {
             me {
+              _id
+              username
+              email
+              height
+              weight
+              sex
+              age
               mealPlans {
                 _id
                 date
@@ -83,6 +91,7 @@ function AddDynamicInput({
       });
       const responseData = await response.json();
       console.log("Response Data: ", responseData);
+      console.log("UserToken:", userToken);
       const userMealPlans = responseData.data.me.mealPlans;
       if (userMealPlans && userMealPlans.length > 0) {
         const firstMealPlan = userMealPlans[0];

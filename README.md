@@ -35,7 +35,6 @@ Discover your diet and track nutrition with Diet Detective! This application wil
 - [Installation](#installation-📋)
 - [Usage](#usage-🏁)
 - [Dependancies](#dependancies)
-- [Credits](#credits)
 - [License](#license)
 - [Authors](#authors-👋🏽)
 
@@ -70,6 +69,7 @@ These are the packages we installed to create this project:
 - [openai](https://platform.openai.com/overview)
 - [prettier](https://prettier.io/docs/en/install)
 - [tailwind](https://tailwindui.com/)
+- [vite](https://vitejs.dev/guide/)
 
 ## Credits
 

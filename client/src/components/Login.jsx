@@ -27,15 +27,10 @@ const Login = () => {
         variables: { ...formState },
       });
 
-      // Check if the login was successful
-      if (data && data.login && data.login.token) {
-        Auth.login(data.login.token); // Store token in local storage upon successful login
-        setIsLoggedIn(true); // Set isLoggedIn state to true
-        alert("Logged in successfully!");
-      } else {
-        console.error("Login Error:", data?.login?.message || "Unknown error");
-        // Handle login error (e.g., display error message)
-      }
+      Auth.login(data.login.token);
+      console.log(data);
+      alert("Logged in successfully!");
+      window.location.assign("/");
     } catch (error) {
       console.error("Login Error:", error);
       // Handle login error (e.g., display error message)
@@ -67,7 +62,7 @@ const Login = () => {
         />
         <p className="mt-3 dark:text-gray-600">
           Don’t have an account yet?{" "}
-          <a className=" text-red-400 font-bold" href="/Signup">
+          <a className=" text-red-400 font-bold" href="/Login">
             Sign up
           </a>
         </p>

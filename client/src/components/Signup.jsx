@@ -35,7 +35,7 @@ const Signup = () => {
       const { data } = await addUser({
         variables: { ...formState },
       });
-      Auth.login(data.addProfile.token);
+      Auth.login(data.addUser.token);
       console.log(data);
     } catch (error) {
       console.error("Mutation Error:", error);

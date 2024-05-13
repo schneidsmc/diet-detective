@@ -1,6 +1,6 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import "./App.css";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 // import Footer from "./components/Footer.jsx";
 import Navbar from "./components/Navbar.jsx";
 import Footer from "./components/Footer.jsx";
@@ -8,6 +8,7 @@ import { RiMoonClearLine } from "react-icons/ri";
 import { FiSun } from "react-icons/fi";
 import { ApolloProvider, ApolloClient, InMemoryCache } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
+import Auth from "./utils/auth.js";
 // import { useEffect } from "react"
 
 const authLink = setContext((_, { headers }) => {
@@ -29,6 +30,18 @@ const client = new ApolloClient({
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    //Check if user is authenticated
+    if (!Auth.loggedIn()) {
+      //Redirect to login page if not authenticated
+      navigate("/login");
+    } else {
+      setDarkMode(true);
+    }
+  }, []); //Run only on component mount
+
   const toggleDarkMode = () => {
     setDarkMode(!darkMode);
   };

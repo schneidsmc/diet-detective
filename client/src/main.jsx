@@ -3,6 +3,7 @@ import React, { useState } from "react";
 // import App from "./App.jsx";
 // import "./index.css";
 
+
 // ReactDOM.createRoot(document.getElementById("root")).render(
 //   <React.StrictMode>
 //     <App />
@@ -26,6 +27,7 @@ import Login from "./components/Login";
 import Signup from "./components/Signup";
 import Profile from "./components/Profile";
 import MealPlan from "./components/MealPlan";
+import AuthProvider from "./utils/authContext.jsx";
 
 const Main = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -42,22 +44,24 @@ const Main = () => {
   };
 
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<App />}>
-          <Route index element={<Home />} />
-          <Route path="/About" element={<About />} />
-          <Route path="/Login" element={<Login onLogin={handleLogin} />} />
-          <Route path="/Signup" element={<Signup />} />
-          <Route path="/Profile" element={<Profile />} />
-          {/* <Route
-            path="/MealPlan"
-            element={isLoggedIn ? <MealPlan /> : <Navigate to="/Login" replace />}
-          /> */}
-          <Route path="/MealPlan" element={<MealPlan />} />
-        </Route>
-      </Routes>
-    </Router>
+
+    <AuthProvider>
+      <Router>
+        <Routes>
+          <Route path="/" element={<App />}>
+            <Route index element={<Home />} />
+            <Route path="/About" element={<About />} />
+            <Route path="/Login" element={<Login />} />
+            <Route path="/Signup" element={<Signup />} />
+            {/* Wrap Profile and Mealplan routes with withAuth component */}
+            <Route path="/Profile" element={<Profile />} />
+            {/* <Route path="/Profile" element={withAuth(Profile)} />  */}
+            <Route path="/Mealplan" element={<MealPlan />} />
+            {/* <Route path="/MealPlan" element={withAuth(MealPlan)} />  */}
+          </Route>
+        </Routes>
+      </Router>
+    </AuthProvider>
   );
 };
 

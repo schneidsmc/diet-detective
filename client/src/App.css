@@ -153,3 +153,11 @@ img:hover {
   cursor: pointer;
   scale: 1.05;
 }
+
+wrapping {
+  display: inline-block;
+  width: 180px;
+  white-space: nowrap;
+  overflow: hidden !important;
+  text-overflow: ellipsis;
+}

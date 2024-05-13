@@ -5,7 +5,7 @@ import { CgProfile } from "react-icons/cg";
 import "./../App.css";
 import logo from "../assets/DIETLOGO4.png";
 
-const Navbar = () => {
+const Navbar = ({ isLoggedIn }) => {
   const [nav, setNav] = useState(false);
   const currentPage = useLocation().pathname;
   const handleNav = () => {
@@ -33,6 +33,7 @@ const Navbar = () => {
           </Link>
         </li>
 
+        {/* {isLoggedIn && ( */}
         <li className="p-5 hover:font-bold text-2xl navbar-shadow">
           <Link
             to="/MealPlan"
@@ -46,6 +47,7 @@ const Navbar = () => {
             MealPlan
           </Link>
         </li>
+        {/* )} */}
 
         <li className="p-5 text-shadow hover:font-bold text-2xl">
           <Link
@@ -147,6 +149,21 @@ const Navbar = () => {
               Home
             </Link>
           </li>
+          {isLoggedIn && (
+            <li className="p-2 text-shadow hover:font-bold">
+              <Link
+                to="/MealPlan"
+                className={
+                  currentPage === "/MealPlan"
+                    ? "nav-link active primary-color"
+                    : "nav-link"
+                }
+              >
+                MealPlan
+              </Link>
+            </li>
+          )}
+
           <li className="p-2 text-shadow hover:font-bold">
             <Link
               to="/About"

@@ -32,6 +32,7 @@ function App() {
   const toggleDarkMode = () => {
     setDarkMode(!darkMode);
   };
+
   return (
     <ApolloProvider client={client}>
       <div className={`${darkMode && "dark"}`}>

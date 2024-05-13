@@ -2,7 +2,7 @@ import React from "react";
 import { useMutation } from "@apollo/client";
 import { CREATE_MEALPLAN } from "../../utils/mutations";
 
-const CreateMealPlanComponent = () => {
+const CreateMealPlanComponent = ({ userToken }) => {
   const [createMealPlan] = useMutation(CREATE_MEALPLAN);
 
   const handleCreateMealPlan = async () => {
@@ -10,7 +10,11 @@ const CreateMealPlanComponent = () => {
       const currentDate = new Date().toISOString().split("T")[0]; // Get current date
       const { data } = await createMealPlan({
         variables: { date: currentDate },
+        headers: {
+          Authorization: `Bearer ${userToken}`,
+        },
       });
+      console.log(data);
       console.log("Created meal plan:", data.createMealPlan);
       // Handle success
     } catch (error) {

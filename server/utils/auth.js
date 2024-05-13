@@ -13,6 +13,7 @@ module.exports = {
   authMiddleware: function ({ req }) {
     // allows token to be sent via req.body, req.query, or headers
     let token = req.body.token || req.query.token || req.headers.authorization;
+    console.log(token);
 
     // We split the token string into an array and return actual token
     if (req.headers.authorization) {
@@ -27,8 +28,8 @@ module.exports = {
     try {
       const { data } = jwt.verify(token, secret, { maxAge: expiration });
       req.user = data;
-    } catch {
-      console.log("Invalid token");
+    } catch (error) {
+      throw new AuthenticationError("Invalid or expired token");
     }
 
     // return the request object so it can be passed to the resolver as `context`

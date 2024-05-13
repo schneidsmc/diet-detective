@@ -1,5 +1,9 @@
-const mongoose = require ('mongoose');
+const mongoose = require("mongoose");
 
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/diet-detective');
+console.log("MONGODB_URI:", process.env.MONGODB.URI);
+
+mongoose.connect(
+  process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/diet-detective",
+);
 
 module.exports = mongoose.connection;

@@ -6,7 +6,7 @@ import { useAuth } from "../utils/authContext";
 import "./../App.css";
 import logo from "../assets/DIETLOGO4.png";
 
-const Navbar = ({ isLoggedIn }) => {
+const Navbar = () => {
   const [nav, setNav] = useState(false);
   const currentPage = useLocation().pathname;
   const { isLoggedIn, logout } = useAuth();
@@ -35,7 +35,6 @@ const Navbar = ({ isLoggedIn }) => {
             Home
           </Link>
         </li>
-
         {/* Conditionally render "MealPlan" link if user is logged in*/}
         {isLoggedIn && (
           <li className="p-5 hover:font-bold text-2xl navbar-shadow">
@@ -163,21 +162,6 @@ const Navbar = ({ isLoggedIn }) => {
               Home
             </Link>
           </li>
-          {isLoggedIn && (
-            <li className="p-2 text-shadow hover:font-bold">
-              <Link
-                to="/MealPlan"
-                className={
-                  currentPage === "/MealPlan"
-                    ? "nav-link active primary-color"
-                    : "nav-link"
-                }
-              >
-                MealPlan
-              </Link>
-            </li>
-          )}
-
           <li className="p-2 text-shadow hover:font-bold">
             <Link
               to="/About"

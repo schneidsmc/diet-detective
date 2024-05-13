@@ -52,6 +52,13 @@ Once the repo is set the user can continue to install all the dependacies needed
 
 This project is deployed [here]() using Render.
 
+These are a couple of screenshots of the app:
+    ![This is a screenshot of how the website looks on top.](client/public/app1.png)
+    ---
+    ![This is a screenshot of how the website looks when you are under about.](client/public/app2.png)
+    ---
+    ![This is a screenshot of an example.](client/public/app3.png)
+
 ## Dependancies
 
 These are the packages we installed to create this project:

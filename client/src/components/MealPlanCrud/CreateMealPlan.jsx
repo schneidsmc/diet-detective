@@ -23,7 +23,14 @@ const CreateMealPlanComponent = ({ userToken }) => {
     }
   };
 
-  return <button onClick={handleCreateMealPlan}>Create Meal Plan</button>;
+  return (
+    <button
+      className="block mt-10 mb-5 mx-auto text-3xl border-solid border-white dark:hover:bg-gray-800 dark:bg-gray-600 border-2 rounded-2xl py-3 pb-4 px-8 shadow-button font-bold"
+      onClick={handleCreateMealPlan}
+    >
+      Create Meal Plan
+    </button>
+  );
 };
 
 export default CreateMealPlanComponent;

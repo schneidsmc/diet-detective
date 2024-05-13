@@ -25,11 +25,12 @@ function AddDynamicInput({
   setFoodInputVal,
   onDataReceived,
   userToken,
+  mealPlanId,
 }) {
   // const [val, setVal] = useState([]);
   const [fetchedData, setFetchedData] = useState(null); // State to store fetched data
-  const [savedToMealPlan, setSavedToMealPlan] = useState(false);
-  const [mealPlanId, setMealPlanId] = useState(null);
+  // const [savedToMealPlan, setSavedToMealPlan] = useState(false);
+  // const [mealPlanId, setMealPlanId] = useState(null);
   const [addFoodToMealPlan] = useMutation(ADD_FOOD_TO_MEAL_PLAN);
 
   useEffect(() => {
@@ -94,26 +95,26 @@ function AddDynamicInput({
     }
   };
 
-  const handleSaveToMealPlan = async () => {
-    if (!mealPlanId) {
-      console.error("Meal Plan ID Not Found");
-      return;
-    }
+  // const handleSaveToMealPlan = async () => {
+  //   if (!mealPlanId) {
+  //     console.error("Meal Plan ID Not Found");
+  //     return;
+  //   }
 
-    try {
-      const { data } = await addFoodToMealPlan({
-        variables: {
-          mealPlanId: mealPlanId,
-          foodId: fetchedData._id, // Assuming fetchedData contains the food ID
-        },
-      });
+  //   try {
+  //     const { data } = await addFoodToMealPlan({
+  //       variables: {
+  //         mealPlanId: mealPlanId,
+  //         foodId: fetchedData._id, // Assuming fetchedData contains the food ID
+  //       },
+  //     });
 
-      console.log("Response", data);
-      setSavedToMealPlan(true);
-    } catch (err) {
-      console.error(err);
-    }
-  };
+  //     console.log("Response", data);
+  //     setSavedToMealPlan(true);
+  //   } catch (err) {
+  //     console.error(err);
+  //   }
+  // };
 
   const handleAdd = () => {
     const newVal = [...foodInputVal, []];
@@ -237,14 +238,14 @@ function AddDynamicInput({
           )}
         </div>
 
-        <button
+        {/* <button
           type="button"
           onClick={handleSaveToMealPlan}
           className={`block mx-auto text-3xl border-solid border-white dark:hover:bg-gray-800 dark:bg-gray-600 border-2 rounded-2xl py-3 pb-4 px-8 shadow-button font-bold ${savedToMealPlan ? "bg-green-500" : ""}`}
           disabled={!fetchedData || savedToMealPlan || !mealPlanId} // Disable button if conditions are not met
         >
           {savedToMealPlan ? "Saved!" : "Save to Meal Plan"}
-        </button>
+        </button> */}
       </form>
     </>
   );

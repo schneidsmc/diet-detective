@@ -4,7 +4,7 @@ import DynamicInput from "./DynamicInput/DynamicInput";
 import { useAuth } from "../utils/authContext";
 import CreateMealPlan from "./MealPlanCrud/CreateMealPlan";
 
-const MealPlan = () => {
+const MealPlan = ({ userToken }) => {
   const [foodInputVal, setFoodInputVal] = useState([]);
   const { isLoggedIn, login, logout } = useAuth();
   // State variable to track dynamicInput button click
@@ -41,6 +41,7 @@ const MealPlan = () => {
               foodInputVal={foodInputVal}
               setFoodInputVal={setFoodInputVal}
               onDataReceived={handleDataReceived}
+              userToken={userToken}
               className="block"
             />
             {showCreateMealPlan && <CreateMealPlan />}{" "}

@@ -6,11 +6,21 @@ import Navbar from "./components/Navbar.jsx";
 import Footer from "./components/Footer.jsx";
 import { RiMoonClearLine } from "react-icons/ri";
 import { FiSun } from "react-icons/fi";
-import { ApolloProvider, ApolloClient, InMemoryCache } from "@apollo/client";
+import {
+  ApolloProvider,
+  ApolloClient,
+  InMemoryCache,
+  createHttpLink,
+} from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
 import Auth from "./utils/auth.js";
 // import { useEffect } from "react"
 
+const httpLink = createHttpLink({
+  uri: "https://diet-detective.onrender.com/graphql" || "/graphql",
+});
+
+// Construct request middleware that will attach the JWT token to every request as an 'authorization' header
 const authLink = setContext((_, { headers }) => {
   // get the authentication token from local storage if it exists
   const token = localStorage.getItem("id_token");
@@ -23,8 +33,10 @@ const authLink = setContext((_, { headers }) => {
   };
 });
 
+//
 const client = new ApolloClient({
-  uri: "http://localhost:3001/graphql",
+  // Set up our client to execute the 'authLink' middleware prior to making the request to our graphQl API
+  link: authLink.concat(httpLink),
   cache: new InMemoryCache(),
 });
 

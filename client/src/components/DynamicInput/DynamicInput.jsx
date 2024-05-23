@@ -7,7 +7,10 @@ import { ADD_FOOD_TO_MEAL_PLAN } from "../../utils/mutations";
 async function fetchDataFromOpenAI(foodInputs) {
   try {
     // API will use the base URL from environment variables (which we will put in .env once the site is hosted) OR localhost:3000
-    const baseURL = "http://localhost:3001";
+
+    //Uncomment this line instead when running in development
+    // const baseURL = 'https://localhost:3001'
+    const baseURL = process.env.REACT_APP_BASE_URI; //Comment this out when running in development
     const queryParams = new URLSearchParams({
       foodInputs: JSON.stringify(foodInputs),
     });

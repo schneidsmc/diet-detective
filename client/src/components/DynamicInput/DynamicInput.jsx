@@ -10,7 +10,7 @@ async function fetchDataFromOpenAI(foodInputs) {
 
     //Uncomment this line instead when running in development
     // const baseURL = "http://localhost:3001";
-    const baseURL = "http://diet-detective.onrender.com";
+    const baseURL = "https://diet-detective.onrender.com";
     // const baseURL = process.env.REACT_APP_BASE_URI;//Comment this out when running in development
     console.log(baseURL);
     const queryParams = new URLSearchParams({

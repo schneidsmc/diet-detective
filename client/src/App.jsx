@@ -35,7 +35,11 @@ const authLink = setContext((_, { headers }) => {
 
 //
 const client = new ApolloClient({
+  //Uncomment this uri link when working locally
+  // uri: 'http://localhost:3001/graphql',
+
   // Set up our client to execute the 'authLink' middleware prior to making the request to our graphQl API
+  // Comment out this link when working locally
   link: authLink.concat(httpLink),
   cache: new InMemoryCache(),
 });

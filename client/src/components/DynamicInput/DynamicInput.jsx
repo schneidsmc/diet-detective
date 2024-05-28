@@ -44,15 +44,18 @@ function AddDynamicInput({
 
   const fetchUserData = async () => {
     try {
-      const response = await fetch("http://localhost:3001/graphql", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${userToken}`,
-        },
+      // Change this to an environment variable
+      const response = await fetch(
+        "https://diet-detective.onrender.com/graphql",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${userToken}`,
+          },
 
-        body: JSON.stringify({
-          query: `
+          body: JSON.stringify({
+            query: `
           query {
             me {
               _id
@@ -92,8 +95,9 @@ function AddDynamicInput({
             }
           }
           `,
-        }),
-      });
+          }),
+        },
+      );
       const responseData = await response.json();
       console.log("Response Data: ", responseData);
       console.log("UserToken:", userToken);

@@ -19,10 +19,16 @@ app.get("/openai", async (req, res) => {
     //Parse the string back into an array
     const foodInputs = JSON.parse(req.query.foodInputs);
     const responseFromOpenAI = await getNutritionForFoods(foodInputs);
+    console.log(
+      "Get request from back-end server API route to /openai",
+      responseFromOpenAI,
+    );
     res.json(responseFromOpenAI);
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: "An error occurred" });
+    res
+      .status(500)
+      .json({ error: "An error occurred when making the get request" });
   }
 });
 

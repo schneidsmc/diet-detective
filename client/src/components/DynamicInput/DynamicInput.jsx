@@ -18,6 +18,7 @@ async function fetchDataFromOpenAI(foodInputs) {
     });
     const url = `${baseURL}/openai?${queryParams}`;
     const response = await fetch(url);
+    console.log("response from openAI API fetch", response);
     const data = await response.json();
     console.log("fetchDataFromOpenAI log", data);
     return data;

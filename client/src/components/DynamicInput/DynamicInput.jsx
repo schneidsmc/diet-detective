@@ -19,6 +19,7 @@ async function fetchDataFromOpenAI(foodInputs) {
     const url = `${baseURL}/openai?${queryParams}`;
     const response = await fetch(url);
     const data = await response.json();
+    console.log("fetchDataFromOpenAI log", data);
     return data;
   } catch (error) {
     console.error("Error:", error);
@@ -38,80 +39,80 @@ function AddDynamicInput({
   // const [mealPlanId, setMealPlanId] = useState(null);
   const [addFoodToMealPlan] = useMutation(ADD_FOOD_TO_MEAL_PLAN);
 
-  useEffect(() => {
-    fetchUserData();
-  }, []);
+  // useEffect(() => {
+  //   fetchUserData();
+  // }, []);
 
-  const fetchUserData = async () => {
-    try {
-      // Change this to an environment variable
-      const response = await fetch(
-        "https://diet-detective.onrender.com/graphql",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${userToken}`,
-          },
+  // const fetchUserData = async () => {
+  //   try {
+  //     // Change this to an environment variable
+  //     const response = await fetch(
+  //       "https://diet-detective.onrender.com/graphql",
+  //       {
+  //         method: "POST",
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //           Authorization: `Bearer ${userToken}`,
+  //         },
 
-          body: JSON.stringify({
-            query: `
-          query {
-            me {
-              _id
-              username
-              email
-              height
-              weight
-              sex
-              age
-              mealPlans {
-                _id
-                date
-                foods {
-                  _id
-                  name
-                  categories {
-                    calories
-                    sodium
-                    sugar
-                    saturated_fats
-                    unsaturated_fats
-                    protein
-                    macronutrients {
-                      carbohydrates
-                      fiber
-                      total_fats
-                    }
-                    micronutrients {
-                      vitamin_A
-                      vitamin_C
-                      calcium
-                      iron
-                    }
-                  }
-                }
-              }
-            }
-          }
-          `,
-          }),
-        },
-      );
-      const responseData = await response.json();
-      console.log("Response Data: ", responseData);
-      console.log("UserToken:", userToken);
-      const userMealPlans = responseData.data.me.mealPlans;
-      if (userMealPlans && userMealPlans.length > 0) {
-        const firstMealPlan = userMealPlans[0];
-        setMealPlanId(firstMealPlan._id);
-      } else {
-        console.error("No meal plans found for this user");
-      }
-    } catch (err) {
-      console.error(err);
-    }
-  };
+  //         body: JSON.stringify({
+  //           query: `
+  //         query {
+  //           me {
+  //             _id
+  //             username
+  //             email
+  //             height
+  //             weight
+  //             sex
+  //             age
+  //             mealPlans {
+  //               _id
+  //               date
+  //               foods {
+  //                 _id
+  //                 name
+  //                 categories {
+  //                   calories
+  //                   sodium
+  //                   sugar
+  //                   saturated_fats
+  //                   unsaturated_fats
+  //                   protein
+  //                   macronutrients {
+  //                     carbohydrates
+  //                     fiber
+  //                     total_fats
+  //                   }
+  //                   micronutrients {
+  //                     vitamin_A
+  //                     vitamin_C
+  //                     calcium
+  //                     iron
+  //                   }
+  //                 }
+  //               }
+  //             }
+  //           }
+  //         }
+  //         `,
+  //         }),
+  //       },
+  //     );
+  //     const responseData = await response.json();
+  //     console.log("Response Data: ", responseData);
+  //     console.log("UserToken:", userToken);
+  //     const userMealPlans = responseData.data.me.mealPlans;
+  //     if (userMealPlans && userMealPlans.length > 0) {
+  //       const firstMealPlan = userMealPlans[0];
+  //       setMealPlanId(firstMealPlan._id);
+  //     } else {
+  //       console.error("No meal plans found for this user");
+  //     }
+  //   } catch (err) {
+  //     console.error(err);
+  //   }
+  // };
 
   // const handleSaveToMealPlan = async () => {
   //   if (!mealPlanId) {
@@ -158,11 +159,11 @@ function AddDynamicInput({
     event.preventDefault();
     try {
       const foods = await fetchDataFromOpenAI(foodInputVal);
-      console.log(foods);
+      console.log("console logging foods", foods);
       setFetchedData(foods); // Update the state with fetched data
       onDataReceived(); //Trigger the onDataReceived function passed in from Mealplan.jsx to trigger the button appearing
     } catch (err) {
-      console.error(err);
+      console.error("formsubmit error", err);
     }
   };
 
